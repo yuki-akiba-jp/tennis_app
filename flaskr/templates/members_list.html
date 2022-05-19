@@ -1,0 +1,41 @@
+{% extends "base.html" %} {% block content %}
+<a href="{{url_for('create_member')}}">create_member</a>
+<div>
+  <h1>members are below</h1>
+  <table>
+    <tr>
+      <th>name</th>
+      <th>age</th>
+      <th>gender</th>
+      <th>play_times</th>
+      <th>delete_button</th>
+    </tr>
+    {% for member in members %}
+    <tr>
+      <td>
+        <a href="{{url_for('update_member', member_id=member.id)}}">
+          {{member.name}}
+      </td>
+      <td>{{member.age}}</td>
+      <td>{{member.gender}}</td>
+      <td>{{member.play_times}}</td>
+      <td>
+        <form method="POST" action="{{url_for('delete_member')}}">
+          {{form.csrf_token}} {{form.id(value=member.id)}} {{form.submit()}}
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+
+  {% if next_players | length >= 4 %}
+  <h1>Next Players</h1>
+  {% else %}
+  <h1>Players are less than four</h1>
+  {% for next_player in next_players %}
+  <p>{{ next_player.name }} <label>play_times</label>{{next_player.play_times}}</p>
+  
+  {% endfor %}
+  {% endif %}
+</div>
+{% endblock %}

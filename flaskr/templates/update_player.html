@@ -1,0 +1,14 @@
+{% extends "base.html" %} {% block content %}
+<div>
+  <h1>update_member</h1>
+  <form method="POST">
+    {{form.csrf_token}} {{form.id(value=member.id)}}
+    {{form.name.label}}{{form.name(value=member.name)}}<br />
+    {{form.age.label}}{{form.age(value=member.age)}}<br />
+    <!-- {{form.gender.label}}{{form.gender(value=member.gender)}}<br /> -->
+    {{form.play_times.label}}{{form.play_times(value=member.play_times)}}<br />
+    {{form.submit()}}
+  </form>
+</div>
+
+{% endblock %}
