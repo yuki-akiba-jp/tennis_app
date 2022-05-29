@@ -1,0 +1,12 @@
+{% extends "base.html" %} {% block content %}
+<div>
+  <h1>update_player</h1>
+  <form method="POST">
+    {{form.csrf_token}} {{form.id(value=player.id)}}
+    {{form.name.label}}{{form.name(value=player.name)}}<br />
+    {{form.play_times.label}}{{form.play_times(value=player.play_times)}}<br />
+    {{form.submit()}}
+  </form>
+</div>
+
+{% endblock %}
