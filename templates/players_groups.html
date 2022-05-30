@@ -1,6 +1,5 @@
 {% from "_formhelpers.html" import render_field %} {% extends "base.html" %} {%
 block content %}
-<a href="{{url_for('user_register')}}">user_register</a>
 <a href="{{url_for('create_players_group')}}">create_players_group</a>
 <h1>home</h1>
 <div>
@@ -11,7 +10,7 @@ block content %}
     <tr>
       <th>group name</th>
     </tr>
-    {% for players_group in players_groups %}
+    {% for players_group in groups %}
     <tr>
       <td>
         <a

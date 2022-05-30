@@ -118,6 +118,17 @@ class PlayerDeleteForm(FlaskForm):
     submit = SubmitField('delete')
 
 
+class PlayersGroupCreateForm(FlaskForm):
+    group_name = StringField('group_name')
+    submit = SubmitField('submit')
+
+
+class PlayersGroupUpdateForm(FlaskForm):
+    id = HiddenField()
+    group_name = StringField('name:')
+    submit = SubmitField('update')
+
+
 class PlayersGroupDeleteForm(FlaskForm):
     id = HiddenField()
     submit = SubmitField('delete')

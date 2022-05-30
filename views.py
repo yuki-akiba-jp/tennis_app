@@ -7,9 +7,10 @@ from flask_login import (current_user, login_manager, login_required,
 
 from app import app
 from forms import (ChangePasswordForm, ForgotPasswordForm, PlayerCreateForm,
-                   PlayerDeleteForm, PlayersGroupDeleteForm, PlayerUpdateForm,
-                   ResetPasswordForm, UserForm, UserLoginForm,
-                   UserRegisterForm)
+                   PlayerDeleteForm, PlayersGroupCreateForm,
+                   PlayersGroupDeleteForm, PlayersGroupUpdateForm,
+                   PlayerUpdateForm, ResetPasswordForm, UserForm,
+                   UserLoginForm, UserRegisterForm)
 from models import PasswordResetToken, Player, PlayersGroup, User, db
 
 login_manager = login_manager.LoginManager()
@@ -19,14 +20,15 @@ login_manager.login_view = 'login'
 
 @login_manager.user_loader
 def load_user(user_id):
-    return User.query.filter_by(alternative_id=user_id).first()
+    return User.query.get(user_id)
 
 
 @app.route('/')
 def home():
     if current_user.is_authenticated:
-        return redirect(url_for('players_in_the_group'))
-    return render_template('home.html')
+        return redirect(url_for('players_groups'))
+    # return render_template('home.html')
+    return render_template('login.html')
 
 
 @app.route('/user_register', methods=['GET', 'POST'])
@@ -146,7 +148,7 @@ def login():
         user = User.select_user_by_email(form.email.data)
         if user and user.is_active and user.validate_password(form.password.data):
             login_user(user, remember=True)
-            return redirect(next)
+            return redirect(url_for('home'))
 
         elif not user:
             flash('no user')
@@ -165,15 +167,15 @@ def logout():
     return redirect(url_for('login'))
 
 
-@app.route('/players_groups/<int:user_id>')
+@app.route('/players_groups')
 @login_required
-def players_groups(user_id):
-    groups = PlayersGroup.query.filter_by(user_id=user_id)
+def players_groups():
+    groups = PlayersGroup.query.filter_by(user_id=current_user.get_id())
     form = PlayersGroupDeleteForm(request.form)
-    return render_template('players_group.html', groups=groups, form=form)
+    return render_template('players_groups.html', groups=groups, form=form)
 
 
-@app.route('/<int:players_group_id>/players_in_the_group')
+@app.route('/players_in_the_group/<int:players_group_id>')
 @login_required
 def players_in_the_group(players_group_id):
     players = Player.query.filter_by(
@@ -197,6 +199,57 @@ def next_game():
     dicided_players = dicide_players(players)
 
     return render_template('players_in_the_group.html', dicided_players=dicided_players, players=players, form=form)
+
+
+@app.route('/create_players_group', methods=['GET', 'POST'])
+@login_required
+def create_players_group(belonged_players_group_id):
+    form = (request.form)
+    if request.method == 'POST' and form.validate():
+        group_name = form.group_name.data
+        user_id = current_user.get_id()
+
+        with db.session.begin(subtransactions=True):
+            new_players_group = PlayersGroup(
+                group_name=group_name, user_id=user_id)
+            db.session.add(new_players_group)
+        db.session.commit()
+        return redirect(url_for('players_groups'))
+    return render_template('create_players_group.html', form=form)
+
+
+@app.route('/update_players_group/<int:players_group_id>', methods=['GET', 'POST'])
+@login_required
+def update_players_group(players_group_id):
+    form = PlayersGroupUpdateForm(request.form)
+    players_group = PlayersGroup.query.get(players_group_id)
+
+    if request.method == 'POST' and form.validate():
+        id = form.id.data
+        group_name = form.group_name.data
+
+        with db.session.begin(subtransactions=True):
+            players_group = PlayersGroup.query.get(id)
+            players_group.group_name = group_name
+            db.session.add(players_group)
+        db.session.commit()
+        return redirect(url_for('players_groups'))
+    return render_template('update_players_group.html', form=form, players_group=players_group)
+
+
+@app.route('/delete_players_group', methods=['GET', 'POST'])
+@login_required
+def delete_players_group():
+    form = PlayersGroupDeleteForm(request.form)
+
+    if request.method == 'POST' and form.validate():
+        with db.session.begin(subtransactions=True):
+            id = form.id.data
+            players_group = PlayersGroup.query.get(id)
+            db.session.delete(players_group)
+        db.session.commit()
+        return redirect(url_for('players_groups'))
+    return redirect(url_for('players_groups'))
 
 
 @app.route('/create_player/<int:belonged_players_group_id>', methods=['GET', 'POST'])
@@ -257,15 +310,17 @@ def init_db():
         new_user.save_new_password('iiiiiiii')
         db.session.add(new_user)
 
-        new_players_group = PlayersGroup('init_db')
-        new_player = Player(name='a', gender='man',
-                            belonged_players_group_id=new_players_group.id)
-        db.session.add(new_players_group)
-        db.session.add(new_player)
+        # new_players_group = PlayersGroup(
+        #     group_name='init_db', user_id=new_user.id)
+        # new_player = Player(name='a', gender='man',
+        #                     belonged_players_group_id=new_players_group.id)
+        # db.session.add(new_players_group)
+        # db.session.add(new_player)
     db.session.commit()
     test_users = User.query.all()
     for user in test_users:
         print(user.username)
+        print(user.id)
 
 
 if __name__ == '__main__':

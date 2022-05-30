@@ -1,0 +1,10 @@
+{% extends "base.html" %} {% block content %}
+<div>
+  <h1>add players_group</h1>
+  <form method="POST">
+    {{form.csrf_token}} {{form.group_name.label}}{{form.group_name()}}<br />
+    {{form.submit()}}
+  </form>
+</div>
+
+{% endblock %}

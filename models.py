@@ -124,5 +124,6 @@ class PlayersGroup(db.Model):
     update_at = db.Column(db.DateTime, default=datetime.now)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
-    def __init__(self, group_name):
+    def __init__(self, group_name,user_id):
         self.group_name = group_name
+        self.user_id = user_id
