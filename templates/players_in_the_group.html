@@ -1,9 +1,13 @@
-{% extends "base.html" %} {% block content %}
-<a href="{{url_for('create_player')}}">create_player</a>
-<a href="{{url_for('next_game')}}">next game</a>
+{% extends "base.html" %} {% block content %} {% if
+current_user.is_authenticated %} current_user_name:{{current_user.username}}
+<a
+  href="{{url_for('create_player',belonged_players_group_id=belonged_players_group_id)}}"
+  >create_player</a
+>
+<a href="{{url_for('next_game',belonged_players_group_id=belonged_players_group_id)}}"
+  >next game</a
+>
 <div>
-  {% if current_user.is_authenticated %} current_user_name:{{current_user.name}}
-
   <h1>players_list</h1>
   <table>
     <tr>

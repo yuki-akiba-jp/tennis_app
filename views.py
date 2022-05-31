@@ -24,10 +24,15 @@ def load_user(user_id):
 
 
 @app.route('/')
-def home():
+def app_top():
+    return render_template('app_top.html')
+
+
+@app.route('/user_home')
+def user_home():
     if current_user.is_authenticated:
         return redirect(url_for('players_groups'))
-    # return render_template('home.html')
+    # return render_template('user_home.html')
     return render_template('login.html')
 
 
@@ -114,10 +119,7 @@ def user_update():
 def change_password():
     form = ChangePasswordForm(request.form)
     if request.method == 'POST' and form.validate():
-        print('current_user:', current_user)
         user = User.select_user_by_id(current_user.get_id())
-        print('user:', user)
-        print('type of user:', type(user))
         password = form.password.data
         with db.session.begin(subtransactions=True):
             user.save_new_password(password)
@@ -128,15 +130,15 @@ def change_password():
 
 
 def dicide_players(players):
-    players.sort(key=lambda player: player.play_times)
-    same_playtimes_players = []
-    for player in players:
-        if player.play_times == players[0].play_times:
-            same_playtimes_players.append(player)
+    # players.sort(key=lambda player: player.play_times)
+    # same_playtimes_players = []
+    # for player in players:
+    #     if player.play_times == players[0].play_times:
+    #         same_playtimes_players.append(player)
 
-    if len(same_playtimes_players) >= 4:
-        random.shuffle(same_playtimes_players)
-        return same_playtimes_players[:4]
+    # if len(same_playtimes_players) >= 4:
+    #     random.shuffle(same_playtimes_players)
+    #     return same_playtimes_players[:4]
 
     return players[:4]
 
@@ -148,7 +150,7 @@ def login():
         user = User.select_user_by_email(form.email.data)
         if user and user.is_active and user.validate_password(form.password.data):
             login_user(user, remember=True)
-            return redirect(url_for('home'))
+            return redirect(url_for('user_home'))
 
         elif not user:
             flash('no user')
@@ -175,20 +177,23 @@ def players_groups():
     return render_template('players_groups.html', groups=groups, form=form)
 
 
-@app.route('/players_in_the_group/<int:players_group_id>')
+@app.route('/players_in_the_group/<int:belonged_players_group_id>')
 @login_required
-def players_in_the_group(players_group_id):
+def players_in_the_group(belonged_players_group_id):
     players = Player.query.filter_by(
-        belonged_players_group_id=players_group_id)
+        belonged_players_group_id=belonged_players_group_id)
+
+    players_group = PlayersGroup.query.filter_by(id=belonged_players_group_id)
     form = PlayerDeleteForm(request.form)
     dicided_players = dicide_players(players)
-    return render_template('players_in_the_group.html', dicided_players=dicided_players, players=players, form=form)
+    return render_template('players_in_the_group.html', dicided_players=dicided_players, players=players, players_group=players_group, form=form, belonged_players_group_id=belonged_players_group_id)
 
 
-@app.route('/next_game')
+@app.route('/next_game/<int:belonged_players_group_id>')
 @login_required
-def next_game():
-    players = Player.query.all()
+def next_game(belonged_players_group_id):
+    players = Player.query.filter_by(id=belonged_players_group_id)
+    players_group = PlayersGroup.query.filter_by(id=belonged_players_group_id)
     played_players = dicide_players(players)
     for player in played_players:
         with db.session.begin(subtransactions=True):
@@ -198,13 +203,13 @@ def next_game():
 
     dicided_players = dicide_players(players)
 
-    return render_template('players_in_the_group.html', dicided_players=dicided_players, players=players, form=form)
+    return render_template('players_in_the_group.html', dicided_players=dicided_players, players=players, form=form, players_group=players_group)
 
 
 @app.route('/create_players_group', methods=['GET', 'POST'])
 @login_required
-def create_players_group(belonged_players_group_id):
-    form = (request.form)
+def create_players_group():
+    form = PlayersGroupCreateForm(request.form)
     if request.method == 'POST' and form.validate():
         group_name = form.group_name.data
         user_id = current_user.get_id()
@@ -218,11 +223,11 @@ def create_players_group(belonged_players_group_id):
     return render_template('create_players_group.html', form=form)
 
 
-@app.route('/update_players_group/<int:players_group_id>', methods=['GET', 'POST'])
+@app.route('/update_players_group/<int:belonged_players_group_id>', methods=['GET', 'POST'])
 @login_required
-def update_players_group(players_group_id):
+def update_players_group(belonged_players_group_id):
     form = PlayersGroupUpdateForm(request.form)
-    players_group = PlayersGroup.query.get(players_group_id)
+    players_group = PlayersGroup.query.get(belonged_players_group_id)
 
     if request.method == 'POST' and form.validate():
         id = form.id.data
@@ -234,7 +239,7 @@ def update_players_group(players_group_id):
             db.session.add(players_group)
         db.session.commit()
         return redirect(url_for('players_groups'))
-    return render_template('update_players_group.html', form=form, players_group=players_group)
+    return render_template('update_players_group.html', form=form, players_group=players_group, belonged_players_group_id=belonged_players_group_id)
 
 
 @app.route('/delete_players_group', methods=['GET', 'POST'])
@@ -256,6 +261,7 @@ def delete_players_group():
 @login_required
 def create_player(belonged_players_group_id):
     form = PlayerCreateForm(request.form)
+    players_group = PlayersGroup.query.get(belonged_players_group_id)
     if request.method == 'POST' and form.validate():
         name = form.name.data
         gender = form.gender.data
@@ -265,8 +271,8 @@ def create_player(belonged_players_group_id):
                 name=name, gender=gender, belonged_players_group_id=belonged_players_group_id)
             db.session.add(new_player)
         db.session.commit()
-        return redirect(url_for('players_in_the_group'))
-    return render_template('create_player.html', form=form)
+        return redirect(url_for('players_in_the_group', belonged_players_group_id=belonged_players_group_id, players_group=players_group))
+    return render_template('create_player.html', form=form, belonged_players_group_id=belonged_players_group_id)
 
 
 @app.route('/update_player/<int:player_id>', methods=['GET', 'POST'])
@@ -318,9 +324,6 @@ def init_db():
         # db.session.add(new_player)
     db.session.commit()
     test_users = User.query.all()
-    for user in test_users:
-        print(user.username)
-        print(user.id)
 
 
 if __name__ == '__main__':
