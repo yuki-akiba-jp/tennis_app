@@ -3,7 +3,7 @@ from flask_login import current_user
 from flask_wtf import FlaskForm
 from wtforms import ValidationError
 from wtforms.fields import (HiddenField, IntegerField, PasswordField,
-                            RadioField, StringField, SubmitField)
+                            SelectField, StringField, SubmitField)
 from wtforms.validators import DataRequired, Email, EqualTo
 
 from models import User
@@ -102,13 +102,16 @@ class ChangePasswordForm(FlaskForm):
 
 class PlayerCreateForm(FlaskForm):
     name = StringField('name:')
-    gender = RadioField('gender', choices=[('man', 'man'), ('woman', 'woman')])
+    gender = SelectField('gender', choices=[
+                         ('man', 'man'), ('woman', 'woman')])
     submit = SubmitField('submit')
 
 
 class PlayerUpdateForm(FlaskForm):
     id = HiddenField()
     name = StringField('name:')
+    gender = SelectField('gender', choices=[
+                         ('man', 'man'), ('woman', 'woman')])
     play_times = IntegerField('play_times:')
     submit = SubmitField('update')
 

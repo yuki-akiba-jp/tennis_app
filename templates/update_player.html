@@ -4,6 +4,7 @@
   <form method="POST">
     {{form.csrf_token}} {{form.id(value=player.id)}}
     {{form.name.label}}{{form.name(value=player.name)}}<br />
+    {{form.gender.label}}{{form.gender(value=player.gender)}}<br />
     {{form.play_times.label}}{{form.play_times(value=player.play_times)}}<br />
     {{form.submit()}}
   </form>

@@ -4,7 +4,8 @@ current_user.is_authenticated %} current_user_name:{{current_user.username}}
   href="{{url_for('create_player',belonged_players_group_id=belonged_players_group_id)}}"
   >create_player</a
 >
-<a href="{{url_for('next_game',belonged_players_group_id=belonged_players_group_id)}}"
+<a
+  href="{{url_for('next_game',belonged_players_group_id=belonged_players_group_id)}}"
   >next game</a
 >
 <div>

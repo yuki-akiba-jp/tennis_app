@@ -129,20 +129,6 @@ def change_password():
     return render_template('change_password.html', form=form)
 
 
-def dicide_players(players):
-    # players.sort(key=lambda player: player.play_times)
-    # same_playtimes_players = []
-    # for player in players:
-    #     if player.play_times == players[0].play_times:
-    #         same_playtimes_players.append(player)
-
-    # if len(same_playtimes_players) >= 4:
-    #     random.shuffle(same_playtimes_players)
-    #     return same_playtimes_players[:4]
-
-    return players[:4]
-
-
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = UserLoginForm(request.form)
@@ -189,25 +175,55 @@ def players_in_the_group(belonged_players_group_id):
     return render_template('players_in_the_group.html', dicided_players=dicided_players, players=players, players_group=players_group, form=form, belonged_players_group_id=belonged_players_group_id)
 
 
+def dicide_players(players):
+    to_return_players = []
+    for player in players:
+        to_return_players.append(player)
+    to_return_players.sort(key=lambda player: player.play_times)
+    same_playtimes_players = []
+    for player in to_return_players:
+        if player.play_times == to_return_players[0].play_times:
+            same_playtimes_players.append(player)
+
+    if len(same_playtimes_players) >= 4:
+        random.shuffle(same_playtimes_players)
+        return same_playtimes_players[:4]
+
+    return to_return_players[:4]
+
+
+def sort_players(players):
+    to_return_players = []
+    for player in players:
+        to_return_players.append(player)
+    to_return_players.sort(key=lambda player: player.play_times)
+    return to_return_players
+
+
 @app.route('/next_game/<int:belonged_players_group_id>')
 @login_required
 def next_game(belonged_players_group_id):
-    players = Player.query.filter_by(id=belonged_players_group_id)
-    players_group = PlayersGroup.query.filter_by(id=belonged_players_group_id)
+    players = Player.query.filter_by(
+        belonged_players_group_id=belonged_players_group_id)
+    players_group = PlayersGroup.query.get(belonged_players_group_id)
     played_players = dicide_players(players)
+
+    players = sort_players(players)
+
     for player in played_players:
         with db.session.begin(subtransactions=True):
             player.inclement_play_times()
         db.session.commit()
+    players = Player.query.filter_by(
+        belonged_players_group_id=belonged_players_group_id)
+    players = sort_players(players)
     form = PlayerDeleteForm(request.form)
 
-    dicided_players = dicide_players(players)
-
-    return render_template('players_in_the_group.html', dicided_players=dicided_players, players=players, form=form, players_group=players_group)
+    return render_template('players_in_the_group.html', dicided_players=played_players, players=players, form=form, players_group=players_group, belonged_players_group_id=belonged_players_group_id)
 
 
-@app.route('/create_players_group', methods=['GET', 'POST'])
-@login_required
+@ app.route('/create_players_group', methods=['GET', 'POST'])
+@ login_required
 def create_players_group():
     form = PlayersGroupCreateForm(request.form)
     if request.method == 'POST' and form.validate():
@@ -223,8 +239,8 @@ def create_players_group():
     return render_template('create_players_group.html', form=form)
 
 
-@app.route('/update_players_group/<int:belonged_players_group_id>', methods=['GET', 'POST'])
-@login_required
+@ app.route('/update_players_group/<int:belonged_players_group_id>', methods=['GET', 'POST'])
+@ login_required
 def update_players_group(belonged_players_group_id):
     form = PlayersGroupUpdateForm(request.form)
     players_group = PlayersGroup.query.get(belonged_players_group_id)
@@ -242,8 +258,8 @@ def update_players_group(belonged_players_group_id):
     return render_template('update_players_group.html', form=form, players_group=players_group, belonged_players_group_id=belonged_players_group_id)
 
 
-@app.route('/delete_players_group', methods=['GET', 'POST'])
-@login_required
+@ app.route('/delete_players_group', methods=['GET', 'POST'])
+@ login_required
 def delete_players_group():
     form = PlayersGroupDeleteForm(request.form)
 
@@ -257,11 +273,11 @@ def delete_players_group():
     return redirect(url_for('players_groups'))
 
 
-@app.route('/create_player/<int:belonged_players_group_id>', methods=['GET', 'POST'])
-@login_required
+@ app.route('/create_player/<int:belonged_players_group_id>', methods=['GET', 'POST'])
+@ login_required
 def create_player(belonged_players_group_id):
     form = PlayerCreateForm(request.form)
-    players_group = PlayersGroup.query.get(belonged_players_group_id)
+
     if request.method == 'POST' and form.validate():
         name = form.name.data
         gender = form.gender.data
@@ -271,16 +287,30 @@ def create_player(belonged_players_group_id):
                 name=name, gender=gender, belonged_players_group_id=belonged_players_group_id)
             db.session.add(new_player)
         db.session.commit()
-        return redirect(url_for('players_in_the_group', belonged_players_group_id=belonged_players_group_id, players_group=players_group))
+
+        players = Player.query.filter_by(
+            belonged_players_group_id=belonged_players_group_id)
+        dicided_players = dicide_players(players)
+        players = sort_players(players)
+        form = PlayerDeleteForm(request.form)
+
+        return render_template('players_in_the_group.html', dicided_players=dicided_players, players=players, form=form,  belonged_players_group_id=belonged_players_group_id)
     return render_template('create_player.html', form=form, belonged_players_group_id=belonged_players_group_id)
 
 
-@app.route('/update_player/<int:player_id>', methods=['GET', 'POST'])
-@login_required
+@ app.route('/update_player/<int:player_id>', methods=['GET', 'POST'])
+@ login_required
 def update_player(player_id):
     form = PlayerUpdateForm(request.form)
     player = Player.query.get(player_id)
 
+    players = Player.query.filter_by(
+        belonged_players_group_id=player.belonged_players_group_id)
+    dicided_players = dicide_players(players)
+    players = sort_players(players)
+
+    form.gender.default = player.gender
+    form.process()
     if request.method == 'POST' and form.validate():
         id = form.id.data
         name = form.name.data
@@ -291,23 +321,29 @@ def update_player(player_id):
             player.name = name
             player.play_times = play_times
         db.session.commit()
-        return redirect(url_for('players_in_the_group'))
-    return render_template('update_player.html', form=form, player=player)
+        return render_template('players_in_the_group.html', dicided_players=dicided_players, players=players, form=form,  belonged_players_group_id=player.belonged_players_group_id)
+    return render_template('update_player.html', form=form, player=player, player_id=player.id)
 
 
-@app.route('/delete_player', methods=['GET', 'POST'])
-@login_required
+@ app.route('/delete_player', methods=['GET', 'POST'])
+@ login_required
 def delete_player():
     form = PlayerDeleteForm(request.form)
+    id = form.id.data
+    player = Player.query.get(id)
+    belonged_players_group_id = player.belonged_players_group_id
+
+    players = Player.query.filter_by(
+        belonged_players_group_id=belonged_players_group_id)
+    dicided_players = dicide_players(players)
+    players = sort_players(players)
 
     if request.method == 'POST' and form.validate():
         with db.session.begin(subtransactions=True):
-            id = form.id.data
-            player = Player.query.get(id)
             db.session.delete(player)
         db.session.commit()
-        return redirect(url_for('players_in_the_group'))
-    return redirect(url_for('players_in_the_group'))
+        return render_template('players_in_the_group.html', dicided_players=dicided_players, players=players, form=form,  belonged_players_group_id=belonged_players_group_id)
+    return render_template('players_in_the_group.html', dicided_players=dicided_players, players=players, form=form,  belonged_players_group_id=belonged_players_group_id)
 
 
 def init_db():
