@@ -91,7 +91,6 @@ class PasswordResetToken(db.Model):
 
     @classmethod
     def publish_token(cls, user):
-        # パスワード設定用のURLを生成
         token = str(uuid4())
         new_token = cls(
             token,
