@@ -10,7 +10,9 @@ block content %}
     <tr>
       <th>group name</th>
     </tr>
-    {% for players_group in groups %}
+    {% if not groups %}
+    <h1>group hasn't been registered yet</h1>
+    {% else %} {% for players_group in groups %}
     <tr>
       <td>
         <a
@@ -26,7 +28,7 @@ block content %}
         </form>
       </td>
     </tr>
-    {% endfor %}
+    {% endfor %} {% endif %}
   </table>
   {% endif %}
 </div>

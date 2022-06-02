@@ -1,5 +1,6 @@
-{% extends "base.html" %} {% block content %} {% if
-current_user.is_authenticated %} current_user_name:{{current_user.username}}
+{% from "_formhelpers.html" import render_field %} {% extends "base.html" %} {%
+block content %} {% if current_user.is_authenticated %}
+current_user_name:{{current_user.username}}
 <a
   href="{{url_for('create_player',belonged_players_group_id=belonged_players_group_id)}}"
   >create_player</a
@@ -8,6 +9,11 @@ current_user.is_authenticated %} current_user_name:{{current_user.username}}
   href="{{url_for('next_game',belonged_players_group_id=belonged_players_group_id)}}"
   >next game</a
 >
+<a
+  href="{{url_for('update_players_group',belonged_players_group_id=belonged_players_group_id)}}"
+  >change group name</a
+>
+<a href="{{url_for('user_home')}}">user_home</a>
 <div>
   <h1>players_list</h1>
   <table>

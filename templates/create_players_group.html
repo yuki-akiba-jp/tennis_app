@@ -1,8 +1,9 @@
-{% extends "base.html" %} {% block content %}
+{% from "_formhelpers.html" import render_field %} {% extends "base.html" %} {%
+block content %}
 <div>
   <h1>add players_group</h1>
   <form method="POST">
-    {{form.csrf_token}} {{form.group_name.label}}{{form.group_name()}}<br />
+    {{form.csrf_token}} {{render_field(form.group_name)}}<br />
     {{form.submit()}}
   </form>
 </div>

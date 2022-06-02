@@ -31,8 +31,9 @@ def app_top():
 @app.route('/user_home')
 def user_home():
     if current_user.is_authenticated:
-        return redirect(url_for('players_groups'))
-    # return render_template('user_home.html')
+        groups = PlayersGroup.query.filter_by(user_id=current_user.get_id())
+        form = PlayersGroupDeleteForm(request.form)
+        return render_template('user_home.html', groups=groups, form=form)
     return render_template('login.html')
 
 
@@ -52,11 +53,12 @@ def user_register():
             token = PasswordResetToken.publish_token(user)
         db.session.commit()
 
-        # メールに飛ばすほうがいい
+# in this case,just print
+# send by email is better
         print(
-            f'パスワード設定用URL: http://127.0.0.1:5000/reset_password/{token}'
+            f'to set password URL: http://127.0.0.1:5000/reset_password/{token}'
         )
-        flash('パスワード設定用のURLをお送りしました。ご確認ください')
+        flash('sent URL for setting password')
         return redirect(url_for('login'))
     return render_template('user_register.html', form=form)
 
@@ -66,7 +68,7 @@ def reset_password(token):
     form = ResetPasswordForm(request.form)
     reset_user_id = PasswordResetToken.get_user_id_by_token(token)
     if not reset_user_id:
-        pass
+        flash('this URL is invalid, please confirm URL')
 
     if request.method == 'POST' and form.validate():
         password = form.password.data
@@ -92,9 +94,9 @@ def forgot_password():
             db.session.commit()
             reset_url = f'http://127.0.0.1:5000/reset_password/{token}'
             print(reset_url)
-            flash('パスワード再登録用のURLを発行しました。')
+            flash('sent URL for reregister password')
         else:
-            flash('存在しないユーザです')
+            flash('invalid user')
     return render_template('forgot_password.html', form=form)
 
 
@@ -235,7 +237,7 @@ def create_players_group():
                 group_name=group_name, user_id=user_id)
             db.session.add(new_players_group)
         db.session.commit()
-        return redirect(url_for('players_groups'))
+        return redirect(url_for('user_home'))
     return render_template('create_players_group.html', form=form)
 
 
@@ -244,6 +246,9 @@ def create_players_group():
 def update_players_group(belonged_players_group_id):
     form = PlayersGroupUpdateForm(request.form)
     players_group = PlayersGroup.query.get(belonged_players_group_id)
+    players = Player.query.filter_by(
+        belonged_players_group_id=belonged_players_group_id)
+    dicided_players = dicide_players(players)
 
     if request.method == 'POST' and form.validate():
         id = form.id.data
@@ -254,7 +259,7 @@ def update_players_group(belonged_players_group_id):
             players_group.group_name = group_name
             db.session.add(players_group)
         db.session.commit()
-        return redirect(url_for('players_groups'))
+        return redirect(url_for('players_in_the_group', dicided_players=dicided_players, players=players, form=form, players_group=players_group, belonged_players_group_id=belonged_players_group_id))
     return render_template('update_players_group.html', form=form, players_group=players_group, belonged_players_group_id=belonged_players_group_id)
 
 
@@ -309,19 +314,22 @@ def update_player(player_id):
     dicided_players = dicide_players(players)
     players = sort_players(players)
 
-    form.gender.default = player.gender
-    form.process()
     if request.method == 'POST' and form.validate():
+        # if request.method == 'POST':
         id = form.id.data
         name = form.name.data
+        gender = form.gender.data
         play_times = form.play_times.data
 
         with db.session.begin(subtransactions=True):
             player = Player.query.get(id)
             player.name = name
+            player.gender = gender
             player.play_times = play_times
         db.session.commit()
-        return render_template('players_in_the_group.html', dicided_players=dicided_players, players=players, form=form,  belonged_players_group_id=player.belonged_players_group_id)
+        return redirect(url_for('players_in_the_group', dicided_players=dicided_players, players=players, form=form,  belonged_players_group_id=player.belonged_players_group_id))
+    form.gender.default = player.gender
+    form.process()
     return render_template('update_player.html', form=form, player=player, player_id=player.id)
 
 
@@ -352,14 +360,7 @@ def init_db():
         new_user.save_new_password('iiiiiiii')
         db.session.add(new_user)
 
-        # new_players_group = PlayersGroup(
-        #     group_name='init_db', user_id=new_user.id)
-        # new_player = Player(name='a', gender='man',
-        #                     belonged_players_group_id=new_players_group.id)
-        # db.session.add(new_players_group)
-        # db.session.add(new_player)
     db.session.commit()
-    test_users = User.query.all()
 
 
 if __name__ == '__main__':

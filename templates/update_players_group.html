@@ -9,49 +9,6 @@
     {{form.submit()}}
   </form>
 
-  <a
-    href="{{url_for('create_player',belonged_players_group_id=players_group.id)}}"
-    >create_player</a
-  >
-  <a href="{{url_for('next_game',belonged_players_group_id=players_group.id)}}"
-    >next game</a
-  >
-  <div>
-    <h1>players_list</h1>
-    <table>
-      <tr>
-        <th>name</th>
-        <th>gender</th>
-        <th>play_times</th>
-        <th>delete button</th>
-      </tr>
-      {% for player in players %}
-      <tr>
-        <td>
-          <a href="{{url_for('update_player', player_id=player.id)}}">
-            {{player.name}}</a
-          >
-        </td>
-        <td>{{player.gender}}</td>
-        <td>{{player.play_times}}</td>
-        <td>
-          <form method="POST" action="{{url_for('delete_player')}}">
-            {{form.csrf_token}} {{form.id(value=player.id)}} {{form.submit()}}
-          </form>
-        </td>
-      </tr>
-      {% endfor %}
-
-      <h1>dicided players</h1>
-
-      {% for dicided_player in dicided_players %}
-      <li>
-        name:{{dicided_player.name}} play_times:{{dicided_player.play_times}}
-      </li>
-      {% endfor %}
-    </table>
     {% endif %}
-  </div>
-</div>
 
 {% endblock %}

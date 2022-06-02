@@ -1,0 +1,17 @@
+{% from "_formhelpers.html" import render_field %} {% extends "base.html" %} {%
+block content %}
+
+<div class="row">
+  <div class="">
+    {% for message in get_flashed_messages() %} {{ message }} {% endfor %}
+  </div>
+  <div class="">
+    <form method="POST" enctype="multipart/form-data">
+      {{form.csrf_token}} {{render_field(form.username,
+      value=current_user.username)}} {{render_field(form.email,
+      value=current_user.email )}} {{form.submit()}}
+    </form>
+    <a href="{{url_for('change_password')}}">change_password</a>
+  </div>
+</div>
+{% endblock %}
