@@ -58,11 +58,12 @@ def user_register():
 
 # in this case,just print
 # send by email is better
-        print(
-            f'to set password URL: http://127.0.0.1:5000/reset_password/{token}'
-        )
-        flash('sent URL for setting password')
-        return redirect(url_for('login'))
+        # print(
+        #     f'to set password URL: http://127.0.0.1:5000/reset_password/{token}'
+        # )
+        # flash('sent URL for setting password')
+
+        return redirect(url_for('reset_password', token=token))
     return render_template('user_register.html', form=form)
 
 
@@ -358,8 +359,8 @@ def delete_player(belonged_players_group_id):
 
 def init_db():
     with db.session.begin(subtransactions=True):
-        new_user = User(username='a', email='a@a.com')
-        new_user.save_new_password('iiiiiiii')
+        new_user = User(username='test', email='test@test.com')
+        new_user.save_new_password('testtest')
         db.session.add(new_user)
 
     db.session.commit()
