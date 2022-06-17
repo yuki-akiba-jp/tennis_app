@@ -53,7 +53,9 @@ def user_register():
         db.session.commit()
         token = ''
         with db.session.begin(subtransactions=True):
+            print('start')
             token = PasswordResetToken.publish_token(user)
+            print('end')
         db.session.commit()
 
 # in this case,just print
@@ -64,10 +66,12 @@ def user_register():
         # flash('sent URL for setting password')
 
         return redirect(url_for('reset_password', token=token))
+        # return redirect(url_for('reset_password'))
     return render_template('user_register.html', form=form)
 
 
 @app.route('/reset_password/<uuid:token>', methods=['GET', 'POST'])
+# @app.route('/reset_password', methods=['GET', 'POST'])
 def reset_password(token):
     form = ResetPasswordForm(request.form)
     reset_user_id = PasswordResetToken.get_user_id_by_token(token)
@@ -83,6 +87,7 @@ def reset_password(token):
         db.session.commit()
         flash('password is changed')
         return redirect(url_for('login'))
+    print('hhh')
     return render_template('reset_password.html', form=form)
 
 

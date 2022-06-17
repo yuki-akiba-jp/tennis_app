@@ -19,7 +19,7 @@ class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String)
     email = db.Column(db.String)
-    hashed_password = db.Column(db.String(64))
+    hashed_password = db.Column(db.String(256))
 
     is_active = db.Column(db.Boolean, unique=False, default=False)
     create_at = db.Column(db.DateTime, default=datetime.now)
@@ -34,7 +34,12 @@ class User(UserMixin, db.Model):
         return cls.query.filter_by(email=email).first()
 
     def validate_password(self, password):
-        return check_password_hash(self.hashed_password, password)
+        # return check_password_hash(self.hashed_password, password)
+        hashed_password = password[5:]+password[:5]
+        if self.hashed_password == hashed_password:
+            return True
+        else:
+            return False
 
     def create_new_user(self):
         db.session.add(self)
@@ -44,7 +49,8 @@ class User(UserMixin, db.Model):
         return cls.query.get(id)
 
     def save_new_password(self, new_password):
-        self.hashed_password = generate_password_hash(new_password)
+        # self.hashed_password = generate_password_hash(new_password)
+        self.hashed_password = new_password[5:] + new_password[:5]
         self.is_active = True
 
 
@@ -74,7 +80,7 @@ class PasswordResetToken(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     token = db.Column(
-        db.String(64),
+        db.String(256),
         unique=True,
         index=True,
         server_default=str(uuid4)
@@ -118,11 +124,11 @@ class PasswordResetToken(db.Model):
 class PlayersGroup(db.Model):
     __tablename__ = 'players_group'
     id = db.Column(db.Integer, primary_key=True)
-    group_name = db.Column(db.Integer)
+    group_name = db.Column(db.String)
     create_at = db.Column(db.DateTime, default=datetime.now)
     update_at = db.Column(db.DateTime, default=datetime.now)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
-    def __init__(self, group_name,user_id):
+    def __init__(self, group_name, user_id):
         self.group_name = group_name
         self.user_id = user_id
