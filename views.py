@@ -71,7 +71,6 @@ def user_register():
 
 
 @app.route('/reset_password/<uuid:token>', methods=['GET', 'POST'])
-# @app.route('/reset_password', methods=['GET', 'POST'])
 def reset_password(token):
     form = ResetPasswordForm(request.form)
     reset_user_id = PasswordResetToken.get_user_id_by_token(token)
