@@ -1,0 +1,9 @@
+Flask
+Flask-Cors
+Flask-Login
+Flask-Migrate
+Flask-SQLAlchemy
+Jinja2
+requests
+SQLAlchemy
+Werkzeug

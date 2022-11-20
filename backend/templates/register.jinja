@@ -1,0 +1,15 @@
+{% extends "base.jinja" %} {% block content %}
+<h1>user register</h1>
+<form method="post">
+  <div class="mb-3">
+    <label for="" class="form-label">username</label>
+    <input type="text" class="form-control"  name="username" />
+  </div>
+  <div class="mb-3 ">
+    <label for="" class="form-label">password</label>
+    <input type="password" class="form-control"  name="password" />
+  </div>
+
+  <button type="submit" class="btn btn-primary">register</button>
+</form>
+{% endblock content %}

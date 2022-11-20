@@ -1,0 +1,298 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/Users/yukiakiba/dev/py_dev/tennis_app/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	/096dc1c1/
+0	backend/templates/.devcontainer/devcontainer.json	/^				"samuelcolvin.jinjahtml"$/;"	s	array:customizations.vscode.extensions
+0	backend/templates/.vscode/extensions.json	/^  "recommendations": ["samuelcolvin.jinjahtml"]$/;"	s	array:recommendations
+0	templates/.devcontainer/devcontainer.json	/^				"samuelcolvin.jinjahtml"$/;"	s	array:customizations.vscode.extensions
+0	templates/.vscode/extensions.json	/^  "recommendations": ["samuelcolvin.jinjahtml"]$/;"	s	array:recommendations
+Player	backend/models.py	/^class Player(db.Model):$/;"	c
+Player	backend/models.py.d1f32f6ab3b2b6903ecbc70d2353caed.py	/^class Player(db.Model):$/;"	c
+Player	models.py	/^class Player(db.Model):$/;"	c
+PlayersGroup	backend/models.py	/^class PlayersGroup(db.Model):$/;"	c
+PlayersGroup	backend/models.py.d1f32f6ab3b2b6903ecbc70d2353caed.py	/^class PlayersGroup(db.Model):$/;"	c
+PlayersGroup	models.py	/^class PlayersGroup(db.Model):$/;"	c
+Registration Form	user_login.html	/^            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form<\/h3>$/;"	j
+SQLALCHEMY_DATABASE_URI	backend/config.py	/^SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']$/;"	v
+SQLALCHEMY_DATABASE_URI	config.py	/^SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']$/;"	v
+User	backend/models.py	/^class User(UserMixin, db.Model):$/;"	c
+User	backend/models.py.d1f32f6ab3b2b6903ecbc70d2353caed.py	/^class User(UserMixin, db.Model):$/;"	c
+User	models.py	/^class User(UserMixin, db.Model):$/;"	c
+__init__	backend/models.py	/^    def __init__(self, group_name, user_id):$/;"	m	class:PlayersGroup
+__init__	backend/models.py	/^    def __init__(self, name, gender, belonged_group_id):$/;"	m	class:Player
+__init__	backend/models.py	/^    def __init__(self, username, hashed_password):$/;"	m	class:User
+__init__	backend/models.py.d1f32f6ab3b2b6903ecbc70d2353caed.py	/^    def __init__(self, group_name, user_id):$/;"	m	class:PlayersGroup
+__init__	backend/models.py.d1f32f6ab3b2b6903ecbc70d2353caed.py	/^    def __init__(self, name, gender, belonged_group_id):$/;"	m	class:Player
+__init__	backend/models.py.d1f32f6ab3b2b6903ecbc70d2353caed.py	/^    def __init__(self, username, hashed_password):$/;"	m	class:User
+__init__	models.py	/^    def __init__(self, group_name, user_id):$/;"	m	class:PlayersGroup
+__init__	models.py	/^    def __init__(self, name, gender, belonged_group_id):$/;"	m	class:Player
+__init__	models.py	/^    def __init__(self, name, gender, belonged_players_group_id):$/;"	m	class:Player
+__init__	models.py	/^    def __init__(self, username, email):$/;"	m	class:User
+__init__	models.py	/^    def __init__(self, username, hashed_password):$/;"	m	class:User
+__tablename__	backend/models.py	/^    __tablename__ = 'player'$/;"	v	class:Player	file:
+__tablename__	backend/models.py	/^    __tablename__ = 'players_group'$/;"	v	class:PlayersGroup	file:
+__tablename__	backend/models.py	/^    __tablename__ = 'user'$/;"	v	class:User	file:
+__tablename__	backend/models.py.d1f32f6ab3b2b6903ecbc70d2353caed.py	/^    __tablename__ = 'player'$/;"	v	class:Player	file:
+__tablename__	backend/models.py.d1f32f6ab3b2b6903ecbc70d2353caed.py	/^    __tablename__ = 'players_group'$/;"	v	class:PlayersGroup	file:
+__tablename__	backend/models.py.d1f32f6ab3b2b6903ecbc70d2353caed.py	/^    __tablename__ = 'user'$/;"	v	class:User	file:
+__tablename__	models.py	/^    __tablename__ = 'player'$/;"	v	class:Player	file:
+__tablename__	models.py	/^    __tablename__ = 'players_group'$/;"	v	class:PlayersGroup	file:
+__tablename__	models.py	/^    __tablename__ = 'user'$/;"	v	class:User	file:
+add member	templates/create_player.html	/^  <h1>add member<\/h1>$/;"	h
+alembic	migrations/alembic.ini	/^[alembic]$/;"	s
+alembic	migrations/alembic.ini	/^[logger_alembic]$/;"	L
+alembic	migrations/alembic.ini	/^qualname = alembic$/;"	q	loggerSection:alembic
+app	app.py	/^app = Flask(__name__)$/;"	v
+app	app.py.9b20c4983b220f7928e0c467cd2fe6d9.py	/^app = Flask(__name__)$/;"	v
+app	setup.py	/^    app = create_app()$/;"	v
+args	migrations/alembic.ini	/^args = (sys.stderr,)$/;"	k	section:handler_console
+auth_bp	backend/auth.py	/^auth_bp = Blueprint('auth', __name__, url_prefix='\/')$/;"	v
+auth_bp	backend/auth.py.21fa292ed74e969a284dacb10a8fc9b4.py	/^auth_bp = Blueprint('auth', __name__, url_prefix='\/')$/;"	v
+basedir	app.py	/^basedir = os.path.abspath(os.path.dirname(__name__))$/;"	v
+basedir	app.py.9b20c4983b220f7928e0c467cd2fe6d9.py	/^basedir = os.path.abspath(os.path.dirname(__name__))$/;"	v
+belonged_group_id	backend/models.py	/^    belonged_group_id = db.Column(db.Integer)$/;"	v	class:Player
+belonged_group_id	backend/models.py.d1f32f6ab3b2b6903ecbc70d2353caed.py	/^    belonged_group_id = db.Column(db.Integer)$/;"	v	class:Player
+belonged_group_id	models.py	/^    belonged_group_id = db.Column(db.Integer)$/;"	v	class:Player
+belonged_players_group_id	models.py	/^    belonged_players_group_id = db.Column(db.Integer)$/;"	v	class:Player
+birthdayDate	user_login.html	/^                    <input type="text" class="form-control form-control-lg" id="birthdayDate" \//;"	I
+branch_labels	migrations/versions/0b1aa616efbd_init.py	/^branch_labels = None$/;"	v
+change_password	views.py	/^def change_password():$/;"	f
+class	migrations/alembic.ini	/^class = StreamHandler$/;"	k	section:handler_console
+config	migrations/env.py	/^config = context.config$/;"	v
+create_app	backend/__init__.py	/^def create_app():$/;"	f
+create_app	backend/__init__.py.e57ceff43855ed064deaf78431ddb160.py	/^def create_app():$/;"	f
+create_at	backend/models.py	/^    create_at = db.Column(db.DateTime, default=datetime.now)$/;"	v	class:PlayersGroup
+create_at	backend/models.py	/^    create_at = db.Column(db.DateTime, default=datetime.now)$/;"	v	class:User
+create_at	backend/models.py.d1f32f6ab3b2b6903ecbc70d2353caed.py	/^    create_at = db.Column(db.DateTime, default=datetime.now)$/;"	v	class:PlayersGroup
+create_at	backend/models.py.d1f32f6ab3b2b6903ecbc70d2353caed.py	/^    create_at = db.Column(db.DateTime, default=datetime.now)$/;"	v	class:User
+create_at	models.py	/^    create_at = db.Column(db.DateTime, default=datetime.now)$/;"	v	class:PlayersGroup
+create_at	models.py	/^    create_at = db.Column(db.DateTime, default=datetime.now)$/;"	v	class:User
+create_group	backend/views.py	/^def create_group():$/;"	f
+create_group	views.py	/^def create_group():$/;"	f
+create_new_user	models.py	/^    def create_new_user(self):$/;"	m	class:User
+create_player	backend/views.py	/^def create_player(group_id):$/;"	f
+create_player	views.py	/^def create_player(belonged_players_group_id):$/;"	f
+create_player	views.py	/^def create_player(belonged_players_group_id):$/;"	f	function:load_user.home.players_groups.players_in_the_group.dicide_players.sort_players.next_game.create_players_group.update_players_group.delete_players_group	file:
+create_player	views.py	/^def create_player(group_id):$/;"	f
+create_players_group	views.py	/^def create_players_group():$/;"	f
+create_players_group	views.py	/^def create_players_group():$/;"	f	function:load_user.home.players_groups.players_in_the_group.dicide_players.sort_players.next_game	file:
+customizations	backend/templates/.devcontainer/devcontainer.json	/^	"customizations": {$/;"	o
+customizations	templates/.devcontainer/devcontainer.json	/^	"customizations": {$/;"	o
+datefmt	migrations/alembic.ini	/^datefmt = %H:%M:%S$/;"	k	section:formatter_generic
+db	app.py	/^db = SQLAlchemy(app)$/;"	v
+db	app.py.9b20c4983b220f7928e0c467cd2fe6d9.py	/^db = SQLAlchemy(app)$/;"	v
+db	backend/__init__.py	/^db = SQLAlchemy()$/;"	v
+db	backend/__init__.py.e57ceff43855ed064deaf78431ddb160.py	/^db = SQLAlchemy()$/;"	v
+db	models.py	/^db = SQLAlchemy(app)$/;"	v
+db_url	app.py	/^    db_url = db_url.replace("postgres:\/\/", "postgresql:\/\/")$/;"	v
+delete_group	backend/views.py	/^def delete_group(group_id):$/;"	f
+delete_group	views.py	/^def delete_group(group_id):$/;"	f
+delete_player	views.py	/^def delete_player(belonged_players_group_id):$/;"	f
+delete_players_group	views.py	/^def delete_players_group():$/;"	f
+delete_players_group	views.py	/^def delete_players_group():$/;"	f	function:load_user.home.players_groups.players_in_the_group.dicide_players.sort_players.next_game.create_players_group.update_players_group	file:
+delete_players_group	views.py	/^def delete_players_group(group_id):$/;"	f
+depends_on	migrations/versions/0b1aa616efbd_init.py	/^depends_on = None$/;"	v
+dicide_players	views.py	/^def dicide_players(players):$/;"	f
+dicide_players	views.py	/^def dicide_players(players):$/;"	f	function:load_user.home.players_groups.players_in_the_group	file:
+down_revision	migrations/versions/0b1aa616efbd_init.py	/^down_revision = None$/;"	v
+downgrade	migrations/versions/0b1aa616efbd_init.py	/^def downgrade():$/;"	f
+email	models.py	/^    email = db.Column(db.String)$/;"	v	class:User
+emailAddress	user_login.html	/^                    <input type="email" id="emailAddress" class="form-control form-control-lg" \//;"	I
+emailHelp	user_login.html	/^    <div id="emailHelp" class="form-text">$/;"	I
+emailHelp	user_login.html	/^    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.<\/div>$/;"	I
+exampleCheck1	templates/user_login.html	/^    <input type="checkbox" class="form-check-input" id="exampleCheck1" \/>$/;"	I
+exampleCheck1	user_login.html	/^    <input type="checkbox" class="form-check-input" id="exampleCheck1" \/>$/;"	I
+exampleCheck1	user_login.html	/^    <input type="checkbox" class="form-check-input" id="exampleCheck1">$/;"	I
+exampleInputEmail1	user_login.html	/^      id="exampleInputEmail1"$/;"	I
+exampleInputEmail1	user_login.html	/^    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp/;"	I
+exampleInputPassword1	templates/user_login.html	/^    <input type="password" class="form-control" id="exampleInputPassword1" \/>$/;"	I
+exampleInputPassword1	user_login.html	/^    <input type="password" class="form-control" id="exampleInputPassword1" \/>$/;"	I
+exampleInputPassword1	user_login.html	/^    <input type="password" class="form-control" id="exampleInputPassword1">$/;"	I
+extensions	backend/templates/.devcontainer/devcontainer.json	/^			"extensions": [$/;"	a	object:customizations.vscode
+extensions	templates/.devcontainer/devcontainer.json	/^			"extensions": [$/;"	a	object:customizations.vscode
+femaleGender	user_login.html	/^                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="f/;"	I
+firstName	user_login.html	/^                    <input type="text" id="firstName" class="form-control form-control-lg" \/>$/;"	I
+flask_migrate	migrations/alembic.ini	/^[logger_flask_migrate]$/;"	L
+flask_migrate	migrations/alembic.ini	/^qualname = flask_migrate$/;"	q	loggerSection:flask_migrate
+forgot_password	views.py	/^def forgot_password():$/;"	f
+format	migrations/alembic.ini	/^format = %(levelname)-5.5s [%(name)s] %(message)s$/;"	k	section:formatter_generic
+formatter	migrations/alembic.ini	/^formatter = generic$/;"	k	section:handler_console
+formatter_generic	migrations/alembic.ini	/^[formatter_generic]$/;"	s
+formatters	migrations/alembic.ini	/^[formatters]$/;"	s
+gender	backend/models.py	/^    gender = db.Column(db.String)$/;"	v	class:Player
+gender	backend/models.py.d1f32f6ab3b2b6903ecbc70d2353caed.py	/^    gender = db.Column(db.String)$/;"	v	class:Player
+gender	models.py	/^    gender = db.Column(db.String)$/;"	v	class:Player
+get_id	backend/models.py	/^    def get_id(self):$/;"	m	class:User
+get_id	backend/models.py.d1f32f6ab3b2b6903ecbc70d2353caed.py	/^    def get_id(self):$/;"	m	class:User
+get_id	models.py	/^    def get_id(cls, user_id):$/;"	m	class:User
+get_id	models.py	/^    def get_id(self):$/;"	m	class:User
+group_name	models.py	/^    group_name = db.Column(db.String)$/;"	v	class:PlayersGroup
+h1	backend/static/css/style.css	/^h1 {$/;"	s
+h1	static/css/style.css	/^h1 {$/;"	s
+handler_console	migrations/alembic.ini	/^[handler_console]$/;"	s
+handlers	migrations/alembic.ini	/^[handlers]$/;"	s
+handlers	migrations/alembic.ini	/^handlers = console$/;"	k	section:logger_root
+handlers	migrations/alembic.ini	/^handlers =$/;"	k	section:logger_alembic
+handlers	migrations/alembic.ini	/^handlers =$/;"	k	section:logger_flask_migrate
+handlers	migrations/alembic.ini	/^handlers =$/;"	k	section:logger_sqlalchemy
+hashed_password	backend/models.py	/^    hashed_password = db.Column(db.String(256))$/;"	v	class:User
+hashed_password	backend/models.py.d1f32f6ab3b2b6903ecbc70d2353caed.py	/^    hashed_password = db.Column(db.String(256))$/;"	v	class:User
+hashed_password	models.py	/^    hashed_password = db.Column(db.String(256))$/;"	v	class:User
+home	app.py	/^    def home():$/;"	f
+home	app.py	/^def home():$/;"	f
+home	backend/views.py	/^def home():$/;"	f
+home	views.py	/^def home():$/;"	f
+home	views.py	/^def home():$/;"	f	function:load_user	file:
+id	backend/models.py	/^    id = db.Column(db.Integer, primary_key=True)$/;"	v	class:Player
+id	backend/models.py	/^    id = db.Column(db.Integer, primary_key=True)$/;"	v	class:PlayersGroup
+id	backend/models.py	/^    id = db.Column(db.Integer, primary_key=True)$/;"	v	class:User
+id	backend/models.py.d1f32f6ab3b2b6903ecbc70d2353caed.py	/^    id = db.Column(db.Integer, primary_key=True)$/;"	v	class:Player
+id	backend/models.py.d1f32f6ab3b2b6903ecbc70d2353caed.py	/^    id = db.Column(db.Integer, primary_key=True)$/;"	v	class:PlayersGroup
+id	backend/models.py.d1f32f6ab3b2b6903ecbc70d2353caed.py	/^    id = db.Column(db.Integer, primary_key=True)$/;"	v	class:User
+id	models.py	/^    id = db.Column(db.Integer, primary_key=True)$/;"	v	class:Player
+id	models.py	/^    id = db.Column(db.Integer, primary_key=True)$/;"	v	class:PlayersGroup
+id	models.py	/^    id = db.Column(db.Integer, primary_key=True)$/;"	v	class:User
+image	backend/templates/.devcontainer/devcontainer.json	/^	"image": "mcr.microsoft.com\/devcontainers\/base:alpine-3.16",$/;"	s
+image	templates/.devcontainer/devcontainer.json	/^	"image": "mcr.microsoft.com\/devcontainers\/base:alpine-3.16",$/;"	s
+inclement_play_times	backend/models.py	/^    def inclement_play_times(self):$/;"	m	class:Player
+inclement_play_times	backend/models.py.d1f32f6ab3b2b6903ecbc70d2353caed.py	/^    def inclement_play_times(self):$/;"	m	class:Player
+inclement_play_times	models.py	/^    def inclement_play_times(self):$/;"	m	class:Player
+init_db	backend/database.py	/^def init_db():$/;"	f
+init_db	backend/database.py	/^def init_db(db):$/;"	f
+init_db	backend/db.py	/^def init_db():$/;"	f
+init_db	backend/db.py	/^def init_db(db):$/;"	f
+init_db	database.py	/^def init_db():$/;"	f
+init_db	db.py	/^def init_db():$/;"	f
+init_db	views.py	/^def init_db():$/;"	f
+is_active	models.py	/^    is_active = db.Column(db.Boolean, unique=False, default=False)$/;"	v	class:User
+keys	migrations/alembic.ini	/^keys = console$/;"	k	section:handlers
+keys	migrations/alembic.ini	/^keys = generic$/;"	k	section:formatters
+keys	migrations/alembic.ini	/^keys = root,sqlalchemy,alembic,flask_migrate$/;"	k	section:loggers
+lastName	user_login.html	/^                    <input type="text" id="lastName" class="form-control form-control-lg" \/>$/;"	I
+level	migrations/alembic.ini	/^level = INFO$/;"	k	section:logger_alembic
+level	migrations/alembic.ini	/^level = INFO$/;"	k	section:logger_flask_migrate
+level	migrations/alembic.ini	/^level = NOTSET$/;"	k	section:handler_console
+level	migrations/alembic.ini	/^level = WARN$/;"	k	section:logger_root
+level	migrations/alembic.ini	/^level = WARN$/;"	k	section:logger_sqlalchemy
+load_user	backend/views.py	/^def load_user(user_id):$/;"	f
+load_user	views.py	/^def load_user(user_id):$/;"	f
+logger	migrations/env.py	/^logger = logging.getLogger('alembic.env')$/;"	v
+logger_alembic	migrations/alembic.ini	/^[logger_alembic]$/;"	s
+logger_flask_migrate	migrations/alembic.ini	/^[logger_flask_migrate]$/;"	s
+logger_root	migrations/alembic.ini	/^[logger_root]$/;"	s
+logger_sqlalchemy	migrations/alembic.ini	/^[logger_sqlalchemy]$/;"	s
+loggers	migrations/alembic.ini	/^[loggers]$/;"	s
+login	auth.py	/^def login():$/;"	f
+login	backend/auth.py	/^def login():$/;"	f
+login	backend/auth.py.21fa292ed74e969a284dacb10a8fc9b4.py	/^def login():$/;"	f
+login	views.py	/^def login():$/;"	f
+login or register	templates/user_login.html	/^<h1>login or register<\/h1>$/;"	h
+login or register	user_login.html	/^<h1>login or register<\/h1>$/;"	h
+login_manager	app.py	/^login_manager = LoginManager()$/;"	v
+login_manager	app.py	/^login_manager = login_manager.LoginManager()$/;"	v
+login_manager	app.py.9b20c4983b220f7928e0c467cd2fe6d9.py	/^login_manager = LoginManager()$/;"	v
+login_manager	backend/__init__.py	/^login_manager = LoginManager()$/;"	v
+login_manager	backend/__init__.py.e57ceff43855ed064deaf78431ddb160.py	/^login_manager = LoginManager()$/;"	v
+login_manager	views.py	/^login_manager = login_manager.LoginManager()$/;"	v
+logout	auth.py	/^def logout():$/;"	f
+logout	backend/auth.py	/^def logout():$/;"	f
+logout	backend/auth.py.21fa292ed74e969a284dacb10a8fc9b4.py	/^def logout():$/;"	f
+logout	views.py	/^def logout():$/;"	f
+maleGender	user_login.html	/^                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="m/;"	I
+name	backend/models.py	/^    name = db.Column(db.String)$/;"	v	class:Player
+name	backend/models.py	/^    name = db.Column(db.String)$/;"	v	class:PlayersGroup
+name	backend/models.py.d1f32f6ab3b2b6903ecbc70d2353caed.py	/^    name = db.Column(db.String)$/;"	v	class:Player
+name	backend/models.py.d1f32f6ab3b2b6903ecbc70d2353caed.py	/^    name = db.Column(db.String)$/;"	v	class:PlayersGroup
+name	backend/templates/.devcontainer/devcontainer.json	/^	"name": "Alpine",$/;"	s
+name	models.py	/^    name = db.Column(db.String)$/;"	v	class:Player
+name	models.py	/^    name = db.Column(db.String)$/;"	v	class:PlayersGroup
+name	templates/.devcontainer/devcontainer.json	/^	"name": "Alpine",$/;"	s
+next_game	views.py	/^def next_game(belonged_players_group_id):$/;"	f
+next_game	views.py	/^def next_game(belonged_players_group_id):$/;"	f	function:load_user.home.players_groups.players_in_the_group.dicide_players.sort_players	file:
+otherGender	user_login.html	/^                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="o/;"	I
+phoneNumber	user_login.html	/^                    <input type="tel" id="phoneNumber" class="form-control form-control-lg" \/>$/;"	I
+play_times	backend/models.py	/^    play_times = db.Column(db.Integer)$/;"	v	class:Player
+play_times	backend/models.py.d1f32f6ab3b2b6903ecbc70d2353caed.py	/^    play_times = db.Column(db.Integer)$/;"	v	class:Player
+play_times	models.py	/^    play_times = db.Column(db.Integer)$/;"	v	class:Player
+players_groups	views.py	/^def players_groups():$/;"	f
+players_groups	views.py	/^def players_groups():$/;"	f	function:load_user.home	file:
+players_in_the_group	views.py	/^def players_in_the_group(belonged_players_group_id):$/;"	f
+players_in_the_group	views.py	/^def players_in_the_group(belonged_players_group_id):$/;"	f	function:load_user.home.players_groups	file:
+process_revision_directives	migrations/env.py	/^    def process_revision_directives(context, revision, directives):$/;"	f	function:run_migrations_online	file:
+qualname	migrations/alembic.ini	/^qualname = alembic$/;"	k	section:logger_alembic
+qualname	migrations/alembic.ini	/^qualname = flask_migrate$/;"	k	section:logger_flask_migrate
+qualname	migrations/alembic.ini	/^qualname = sqlalchemy.engine$/;"	k	section:logger_sqlalchemy
+qualname	migrations/alembic.ini	/^qualname =$/;"	k	section:logger_root
+recommendations	backend/templates/.vscode/extensions.json	/^  "recommendations": ["samuelcolvin.jinjahtml"]$/;"	a
+recommendations	templates/.vscode/extensions.json	/^  "recommendations": ["samuelcolvin.jinjahtml"]$/;"	a
+register	backend/auth.py	/^def register():$/;"	f
+register	backend/auth.py.21fa292ed74e969a284dacb10a8fc9b4.py	/^def register():$/;"	f
+reportGeneralTypeIssues	backend/pyrightconfig.json	/^  "reportGeneralTypeIssues": "none",$/;"	s
+reportGeneralTypeIssues	pyrightconfig.json	/^  "reportGeneralTypeIssues": "none"$/;"	s
+reportGeneralTypeIssues	pyrightconfig.json	/^  "reportGeneralTypeIssues": "none",$/;"	s
+reportOptionalSubscript	backend/pyrightconfig.json	/^  "reportOptionalSubscript": "none"$/;"	s
+reportOptionalSubscript	pyrightconfig.json	/^  "reportOptionalSubscript": "none"$/;"	s
+reset_password	views.py	/^def reset_password(token):$/;"	f
+revision	migrations/versions/0b1aa616efbd_init.py	/^revision = '0b1aa616efbd'$/;"	v
+root	migrations/alembic.ini	/^[logger_root]$/;"	L
+run_migrations_offline	migrations/env.py	/^def run_migrations_offline():$/;"	f
+run_migrations_online	migrations/env.py	/^def run_migrations_online():$/;"	f
+sa	migrations/versions/0b1aa616efbd_init.py	/^import sqlalchemy as sa$/;"	I	nameref:module:sqlalchemy
+select_user_by_email	models.py	/^    def select_user_by_email(cls, email):$/;"	m	class:User
+show_group	backend/views.py	/^def show_group():$/;"	f
+show_group	views.py	/^def show_group():$/;"	f
+sort_players	views.py	/^def sort_players(players):$/;"	f
+sort_players	views.py	/^def sort_players(players):$/;"	f	function:load_user.home.players_groups.players_in_the_group.dicide_players	file:
+sqlalchemy	migrations/alembic.ini	/^[logger_sqlalchemy]$/;"	L
+sqlalchemy.engine	migrations/alembic.ini	/^qualname = sqlalchemy.engine$/;"	q	loggerSection:sqlalchemy
+target_metadata	migrations/env.py	/^target_metadata = current_app.extensions['migrate'].db.metadata$/;"	v
+tennis	templates/base.html	/^    <title>tennis<\/title>$/;"	j
+update_at	backend/models.py	/^    update_at = db.Column(db.DateTime, default=datetime.now)$/;"	v	class:PlayersGroup
+update_at	backend/models.py	/^    update_at = db.Column(db.DateTime, default=datetime.now)$/;"	v	class:User
+update_at	backend/models.py.d1f32f6ab3b2b6903ecbc70d2353caed.py	/^    update_at = db.Column(db.DateTime, default=datetime.now)$/;"	v	class:PlayersGroup
+update_at	backend/models.py.d1f32f6ab3b2b6903ecbc70d2353caed.py	/^    update_at = db.Column(db.DateTime, default=datetime.now)$/;"	v	class:User
+update_at	models.py	/^    update_at = db.Column(db.DateTime, default=datetime.now)$/;"	v	class:PlayersGroup
+update_at	models.py	/^    update_at = db.Column(db.DateTime, default=datetime.now)$/;"	v	class:User
+update_group	backend/views.py	/^def update_group(group_id):$/;"	f
+update_group	views.py	/^def update_group(group_id):$/;"	f
+update_player	backend/views.py	/^def update_player(player_id):$/;"	f
+update_player	templates/update_player.html	/^  <h1>update_player<\/h1>$/;"	h
+update_player	views.py	/^def update_player(player_id):$/;"	f
+update_player	views.py	/^def update_player(player_id):$/;"	f	function:load_user.home.players_groups.players_in_the_group.dicide_players.sort_players.next_game.create_players_group.update_players_group.delete_players_group.create_player	file:
+update_players_group	views.py	/^def update_players_group(belonged_players_group_id):$/;"	f
+update_players_group	views.py	/^def update_players_group(belonged_players_group_id):$/;"	f	function:load_user.home.players_groups.players_in_the_group.dicide_players.sort_players.next_game.create_players_group	file:
+upgrade	migrations/versions/0b1aa616efbd_init.py	/^def upgrade():$/;"	f
+user register	templates/user_register.html	/^<h1>user register<\/h1>$/;"	h
+user register	user_login.html	/^<h1>user register<\/h1>$/;"	h
+user_home	views.py	/^def user_home():$/;"	f
+user_id	backend/models.py	/^    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)$/;"	v	class:PlayersGroup
+user_id	backend/models.py.d1f32f6ab3b2b6903ecbc70d2353caed.py	/^    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)$/;"	v	class:PlayersGroup
+user_id	models.py	/^    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)$/;"	v	class:PlayersGroup
+user_register	auth.py	/^def user_register():$/;"	f
+user_register	backend/auth.py	/^def user_register():$/;"	f
+user_register	views.py	/^def user_register():$/;"	f
+user_update	auth.py	/^def user_update():$/;"	f
+user_update	backend/auth.py	/^def user_update():$/;"	f
+user_update	backend/auth.py.21fa292ed74e969a284dacb10a8fc9b4.py	/^def user_update():$/;"	f
+user_update	views.py	/^def user_update():$/;"	f
+username	backend/models.py	/^    username = db.Column(db.String)$/;"	v	class:User
+username	backend/models.py.d1f32f6ab3b2b6903ecbc70d2353caed.py	/^    username = db.Column(db.String)$/;"	v	class:User
+username	models.py	/^    username = db.Column(db.String)$/;"	v	class:User
+username	templates/user_login.html	/^      id="username"$/;"	I
+username	user_login.html	/^      id="username"$/;"	I
+username	user_login.html	/^    <input type="text" class="form-control" id="username" -describedby="emailHelp" \/>$/;"	I
+validate_password	backend/models.py	/^    def validate_password(self, password):$/;"	m	class:User
+validate_password	backend/models.py.d1f32f6ab3b2b6903ecbc70d2353caed.py	/^    def validate_password(self, password):$/;"	m	class:User
+validate_password	models.py	/^    def validate_password(self, password):$/;"	m	class:User
+view_bp	backend/views.py	/^view_bp = Blueprint('auth', __name__, url_prefix='\/')$/;"	v
+view_bp	backend/views.py	/^view_bp = Blueprint('view', __name__, url_prefix='\/')$/;"	v
+view_bp	backend/views.py	/^view_bp = Blueprint('views', __name__, url_prefix='\/')$/;"	v
+vscode	backend/templates/.devcontainer/devcontainer.json	/^		"vscode": {$/;"	o	object:customizations
+vscode	templates/.devcontainer/devcontainer.json	/^		"vscode": {$/;"	o	object:customizations

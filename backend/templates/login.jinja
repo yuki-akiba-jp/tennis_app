@@ -1,0 +1,27 @@
+{% extends "base.jinja" %} {% block content %}
+<h1>login</h1>
+{% if username %}
+    {{ username }}
+{% endif %}
+<form method="post">
+  <div class="mb-3">
+    <label for="" class="form-label">username</label>
+    <input type="text" class="form-control"  name="username" />
+  </div>
+  <div class="mb-3 ">
+    <label for="" class="form-label">password</label>
+    <input type="password" class="form-control"  name="password" />
+  </div>
+
+  <button type="submit" class="btn btn-primary">login</button>
+</form>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+{% endblock content %}

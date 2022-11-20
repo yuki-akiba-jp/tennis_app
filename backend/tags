@@ -1,0 +1,69 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/Users/yukiakiba/dev/py_dev/tennis_app/backend/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	/096dc1c1/
+0	templates/.devcontainer/devcontainer.json	/^				"samuelcolvin.jinjahtml"$/;"	s	array:customizations.vscode.extensions
+0	templates/.vscode/extensions.json	/^  "recommendations": ["samuelcolvin.jinjahtml"]$/;"	s	array:recommendations
+Player	models.py	/^class Player(db.Model):$/;"	c
+PlayersGroup	models.py	/^class PlayersGroup(db.Model):$/;"	c
+SQLALCHEMY_DATABASE_URI	config.py	/^SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']$/;"	v
+User	models.py	/^class User(UserMixin, db.Model):$/;"	c
+__init__	models.py	/^    def __init__(self, group_name, user_id):$/;"	m	class:PlayersGroup
+__init__	models.py	/^    def __init__(self, name, gender, belonged_group_id):$/;"	m	class:Player
+__init__	models.py	/^    def __init__(self, username, hashed_password):$/;"	m	class:User
+__tablename__	models.py	/^    __tablename__ = 'player'$/;"	v	class:Player	file:
+__tablename__	models.py	/^    __tablename__ = 'players_group'$/;"	v	class:PlayersGroup	file:
+__tablename__	models.py	/^    __tablename__ = 'user'$/;"	v	class:User	file:
+app	__init__.py	/^app = Flask(__name__)$/;"	v
+basedir	__init__.py	/^basedir = os.path.abspath(os.path.dirname(__name__))$/;"	v
+belonged_group_id	models.py	/^    belonged_group_id = db.Column(db.Integer)$/;"	v	class:Player
+create_app	__init__.py	/^def create_app():$/;"	f
+create_at	models.py	/^    create_at = db.Column(db.DateTime, default=datetime.now)$/;"	v	class:PlayersGroup
+create_at	models.py	/^    create_at = db.Column(db.DateTime, default=datetime.now)$/;"	v	class:User
+create_group	views.py	/^def create_group():$/;"	f
+create_player	views.py	/^def create_player(group_id):$/;"	f
+customizations	templates/.devcontainer/devcontainer.json	/^	"customizations": {$/;"	o
+db	__init__.py	/^db = SQLAlchemy()$/;"	v
+db	__init__.py	/^db = SQLAlchemy(app)$/;"	v
+delete_group	views.py	/^def delete_group(group_id):$/;"	f
+extensions	templates/.devcontainer/devcontainer.json	/^			"extensions": [$/;"	a	object:customizations.vscode
+gender	models.py	/^    gender = db.Column(db.String)$/;"	v	class:Player
+get_id	models.py	/^    def get_id(self):$/;"	m	class:User
+h1	static/css/style.css	/^h1 {$/;"	s
+hashed_password	models.py	/^    hashed_password = db.Column(db.String(256))$/;"	v	class:User
+home	views.py	/^def home():$/;"	f
+id	models.py	/^    id = db.Column(db.Integer, primary_key=True)$/;"	v	class:Player
+id	models.py	/^    id = db.Column(db.Integer, primary_key=True)$/;"	v	class:PlayersGroup
+id	models.py	/^    id = db.Column(db.Integer, primary_key=True)$/;"	v	class:User
+image	templates/.devcontainer/devcontainer.json	/^	"image": "mcr.microsoft.com\/devcontainers\/base:alpine-3.16",$/;"	s
+inclement_play_times	models.py	/^    def inclement_play_times(self):$/;"	m	class:Player
+init_db	db.py	/^def init_db():$/;"	f
+load_user	views.py	/^def load_user(user_id):$/;"	f
+login	auth.py	/^def login():$/;"	f
+login_manager	__init__.py	/^login_manager = LoginManager()$/;"	v
+logout	auth.py	/^def logout():$/;"	f
+name	models.py	/^    name = db.Column(db.String)$/;"	v	class:Player
+name	models.py	/^    name = db.Column(db.String)$/;"	v	class:PlayersGroup
+name	templates/.devcontainer/devcontainer.json	/^	"name": "Alpine",$/;"	s
+play_times	models.py	/^    play_times = db.Column(db.Integer)$/;"	v	class:Player
+recommendations	templates/.vscode/extensions.json	/^  "recommendations": ["samuelcolvin.jinjahtml"]$/;"	a
+reportGeneralTypeIssues	pyrightconfig.json	/^  "reportGeneralTypeIssues": "none",$/;"	s
+reportOptionalSubscript	pyrightconfig.json	/^  "reportOptionalSubscript": "none"$/;"	s
+show_group	views.py	/^def show_group():$/;"	f
+update_at	models.py	/^    update_at = db.Column(db.DateTime, default=datetime.now)$/;"	v	class:PlayersGroup
+update_at	models.py	/^    update_at = db.Column(db.DateTime, default=datetime.now)$/;"	v	class:User
+update_group	views.py	/^def update_group(group_id):$/;"	f
+update_player	views.py	/^def update_player(player_id):$/;"	f
+user_id	models.py	/^    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)$/;"	v	class:PlayersGroup
+user_register	auth.py	/^def user_register():$/;"	f
+user_update	auth.py	/^def user_update():$/;"	f
+username	models.py	/^    username = db.Column(db.String)$/;"	v	class:User
+validate_password	models.py	/^    def validate_password(self, password):$/;"	m	class:User
+vscode	templates/.devcontainer/devcontainer.json	/^		"vscode": {$/;"	o	object:customizations

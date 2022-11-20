@@ -1,0 +1,20 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/Users/yukiakiba/dev/py_dev/tennis_app/templates/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	/096dc1c1/
+0	.devcontainer/devcontainer.json	/^				"samuelcolvin.jinjahtml"$/;"	s	array:customizations.vscode.extensions
+0	.vscode/extensions.json	/^  "recommendations": ["samuelcolvin.jinjahtml"]$/;"	s	array:recommendations
+customizations	.devcontainer/devcontainer.json	/^	"customizations": {$/;"	o
+extensions	.devcontainer/devcontainer.json	/^			"extensions": [$/;"	a	object:customizations.vscode
+image	.devcontainer/devcontainer.json	/^	"image": "mcr.microsoft.com\/devcontainers\/base:alpine-3.16",$/;"	s
+name	.devcontainer/devcontainer.json	/^	"name": "Alpine",$/;"	s
+recommendations	.vscode/extensions.json	/^  "recommendations": ["samuelcolvin.jinjahtml"]$/;"	a
+user register	user_register.html	/^<h1>user register<\/h1>$/;"	h
+vscode	.devcontainer/devcontainer.json	/^		"vscode": {$/;"	o	object:customizations

@@ -1,0 +1,11 @@
+{% extends "base.jinja" %}{% block content %}
+<a href="{{url_for('auth.logout')}}">
+    <button type="submit" name="logout" class="btn btn-outline-primary">logout</button>
+</a>
+
+<h1>home</h1>
+
+{% for group in groups %}
+{{ group.name }}
+{% endfor %}
+{% endblock content %}
