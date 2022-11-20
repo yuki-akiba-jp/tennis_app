@@ -3,6 +3,8 @@ Flask-Cors
 Flask-Login
 Flask-Migrate
 Flask-SQLAlchemy
+Flask-Testing
+Flask-WTF
 Jinja2
 requests
 SQLAlchemy
