@@ -43,12 +43,10 @@ def create_group():
 @view_bp.route('/update_group/<int:group_id>', methods=['GET', 'POST'])
 @ login_required
 def update_group(group_id):
-    group = PlayersGroup.query.get(id=group_id)
     if request.method == 'POST':
-        group_name = request.form['group_name']
-        group.name = group_name
         with db.session.begin(subtransactions=True):
-            db.session.add(group)
+            group = PlayersGroup.query.get(id=group_id)
+            group.name = request.form['group_name']
         db.session.commit()
         return redirect(url_for('home'))
     return render_template('update_group.jinja')
@@ -90,21 +88,16 @@ def update_player(player_id):
     group_id = player.belonged_group_id
 
     if request.method == 'POST':
-        player_id = request.form['player_id']
-        player_name = request.form['player_name']
-        player_gender = request.form['player_gender']
-        play_times = request.form['play_times']
-
         with db.session.begin(subtransactions=True):
             player = Player.query.get(id)
-            player.name = player_name
-            player.gender = player_gender
-            player.play_times = play_times
+            player.name = request.form['player_name']
+            player.gender = request.form['player_gender']
+            player.play_times = request.form['play_times']
         db.session.commit()
         return redirect(url_for('show_group'), group_id=group_id)
     return render_template('update_player.jinja')
 
 
 @view_bp.route('/show_group/<int:group_id>', methods=['GET'])
-def show_group():
+def show_group(group_id):
     return render_template('show_group.jinja')

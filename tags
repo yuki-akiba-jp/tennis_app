@@ -247,6 +247,7 @@ run_migrations_online	migrations/env.py	/^def run_migrations_online():$/;"	f
 sa	migrations/versions/0b1aa616efbd_init.py	/^import sqlalchemy as sa$/;"	I	nameref:module:sqlalchemy
 select_user_by_email	models.py	/^    def select_user_by_email(cls, email):$/;"	m	class:User
 show_group	backend/views.py	/^def show_group():$/;"	f
+show_group	backend/views.py	/^def show_group(group_id):$/;"	f
 show_group	views.py	/^def show_group():$/;"	f
 sort_players	views.py	/^def sort_players(players):$/;"	f
 sort_players	views.py	/^def sort_players(players):$/;"	f	function:load_user.home.players_groups.players_in_the_group.dicide_players	file:
