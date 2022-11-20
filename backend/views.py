@@ -15,7 +15,6 @@ view_bp = Blueprint('views', __name__, url_prefix='/')
 
 
 @view_bp.route('/')
-@login_required
 def home():
     if current_user.is_authenticated:
         groups_by_query = PlayersGroup.query.filter_by(

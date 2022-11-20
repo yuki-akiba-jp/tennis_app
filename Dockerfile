@@ -1,9 +1,9 @@
 FROM python:3.9
 
-WORKDIR /app
 
 ENV FLASK_DEBUG=development
 
+WORKDIR /app
 COPY . .
 
 RUN apt update && apt install -y sqlite3 vim less
