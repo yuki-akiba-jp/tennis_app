@@ -35,22 +35,18 @@ def login():
         username = request.form['username']
         password = request.form['password']
         user = User.query.filter_by(username=username).first()
-        flash(username)
-        flash(password)
-        flash(user.validate_password(password))
+        message = ''
+
         if not user:
-            flash('no  user')
+            message = 'no user'
+            return render_template('login.jinja', message=message)
 
         if user.validate_password(password):
             login_user(user, remember=True)
             return redirect(url_for('views.home'))
-
-        elif not user:
-            flash('no user')
-        elif not user.is_active:
-            flash('invalid user')
-        elif not user.validate_password(password):
-            flash('username or password is wrong')
+        else:
+            message = 'username or password is wrong'
+            return render_template('login.jinja', message=message)
 
     return render_template('login.jinja')
 

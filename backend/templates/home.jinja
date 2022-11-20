@@ -3,6 +3,10 @@
     <button type="submit" name="logout" class="btn btn-outline-primary">logout</button>
 </a>
 
+<a href="{{url_for('views.create_group')}}">
+    <button type="submit" name="create_group" class="btn btn-primary">create_group</button>
+</a>
+
 <h1>home</h1>
 
 {% for group in groups %}
