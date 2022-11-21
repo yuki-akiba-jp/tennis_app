@@ -14,13 +14,17 @@ def load_user(user_id):
 view_bp = Blueprint('views', __name__, url_prefix='/')
 
 
+def get_groups(current_user):
+    groups_by_query = PlayersGroup.query.filter_by(
+        user_id=current_user.get_id())
+    groups = [group for group in groups_by_query]
+    return groups
+
+
 @view_bp.route('/')
 def home():
     if current_user.is_authenticated:
-        groups_by_query = PlayersGroup.query.filter_by(
-            user_id=current_user.get_id())
-        groups = [group for group in groups_by_query]
-        return render_template('home.jinja', groups=groups)
+        return render_template('home.jinja', groups=get_groups(current_user=current_user))
     return redirect(url_for('auth.login'))
 
 
@@ -36,7 +40,7 @@ def create_group():
                 name=group_name, user_id=user_id)
             db.session.add(new_group)
         db.session.commit()
-        return redirect(url_for('home'))
+        return redirect(url_for('views.home'))
     return render_template('create_group.jinja')
 
 
@@ -45,10 +49,10 @@ def create_group():
 def update_group(group_id):
     if request.method == 'POST':
         with db.session.begin(subtransactions=True):
-            group = PlayersGroup.query.get(id=group_id)
+            group = PlayersGroup.query.get(group_id)
             group.name = request.form['group_name']
         db.session.commit()
-        return redirect(url_for('home'))
+        return redirect(url_for('views.home'))
     return render_template('update_group.jinja')
 
 
@@ -61,7 +65,7 @@ def delete_group(group_id):
             group = PlayersGroup.query.get(id=group_id)
             db.session.delete(group)
         db.session.commit()
-        return redirect(url_for('home'))
+        return redirect(url_for('views.home'))
 
 
 @ view_bp.route('/create_player/<int:group_id>', methods=['GET', 'POST'])

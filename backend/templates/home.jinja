@@ -1,4 +1,7 @@
 {% extends "base.jinja" %}{% block content %}
+
+<div class="col-12"> username:{{ current_user.username }} </div>
+
 <a href="{{url_for('auth.logout')}}">
     <button type="submit" name="logout" class="btn btn-outline-primary">logout</button>
 </a>
@@ -6,10 +9,12 @@
 <a href="{{url_for('views.create_group')}}">
     <button type="submit" name="create_group" class="btn btn-primary">create_group</button>
 </a>
-
 <h1>home</h1>
 
 {% for group in groups %}
-{{ group.name }}
+<div>
+<a href="{{ url_for('views.update_group',group_id=group.id) }}">group name: {{ group.name }} </a>
+    <button type="submit" name="update-btn">update</button>
+</div>
 {% endfor %}
 {% endblock content %}
