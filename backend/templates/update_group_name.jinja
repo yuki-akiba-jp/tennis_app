@@ -1,0 +1,12 @@
+{% extends "base.jinja" %} {% block content %}
+<h1>update_group</h1>
+    <button type="submit" name="create_player" onclick="location.href='{{ url_for('views.create_player',group_id=group_id) }}';"  class="btn btn-primary">create_player</button>
+
+<form method="post">
+  <div class="mb-3">
+    <label for="" class="form-label">group name</label>
+    <input type="text" class="form-control"  name="group_name" />
+  </div>
+ <button type="submit" class="btn btn-primary">update group name</button>
+</form>
+{% endblock content %}

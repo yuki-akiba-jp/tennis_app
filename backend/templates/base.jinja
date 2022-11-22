@@ -16,6 +16,10 @@
   <!--   <h1>tennis app</h1> -->
   <!-- </div> -->
 
+  {% if current_user.is_authenticated %}
+    
+<button type="submit" name="logout" onclick="location.href='{{ url_for('auth.logout') }}';"  class="btn btn-primary">logout</button>
+  {% endif %}
     {% block content %} 
     {% endblock content %}
   </body>

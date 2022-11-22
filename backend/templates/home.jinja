@@ -2,19 +2,14 @@
 
 <div class="col-12"> username:{{ current_user.username }} </div>
 
-<a href="{{url_for('auth.logout')}}">
-    <button type="submit" name="logout" class="btn btn-outline-primary">logout</button>
-</a>
 
-<a href="{{url_for('views.create_group')}}">
-    <button type="submit" name="create_group" class="btn btn-primary">create_group</button>
-</a>
+<button type="submit" name="create_group" onclick="location.href='{{ url_for('views.create_group') }}';"  class="btn btn-primary">create_group</button>
 <h1>home</h1>
 
 {% for group in groups %}
 <div>
-<a href="{{ url_for('views.update_group',group_id=group.id) }}">group name: {{ group.name }} </a>
-    <button type="submit" name="update-btn">update</button>
+ {{ group.name }}
+    <button type="submit" name="update_group" onclick="location.href='{{ url_for('views.group_info',group_id=group.id) }}';"  class="btn btn-primary">group_info</button>
 </div>
 {% endfor %}
 {% endblock content %}

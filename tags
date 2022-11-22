@@ -53,6 +53,8 @@ db	backend/auth.py	/^from backend import db$/;"	i
 db	backend/models.py	/^from backend import db$/;"	i
 db	backend/views.py	/^from backend.models import Player, PlayersGroup, User, db$/;"	i
 delete_group	backend/views.py	/^def delete_group(group_id):$/;"	f
+delete_group	backend/views.py	/^def delete_group(player_id):$/;"	f
+delete_player	backend/views.py	/^def delete_player(player_id):$/;"	f
 extensions	backend/templates/.devcontainer/devcontainer.json	/^			"extensions": [$/;"	a	object:customizations.vscode
 flash	backend/auth.py	/^from flask import Blueprint, flash, redirect, render_template, request, url_for$/;"	i
 gender	backend/models.py	/^    gender = db.Column(db.String)$/;"	v	class:Player
@@ -60,8 +62,10 @@ generate_password_hash	backend/__init__.py	/^from werkzeug.security import gener
 generate_password_hash	backend/auth.py	/^from werkzeug.security import generate_password_hash$/;"	i
 generate_password_hash	backend/database.py	/^from werkzeug.security import generate_password_hash$/;"	i
 generate_password_hash	backend/models.py	/^from werkzeug.security import check_password_hash, generate_password_hash$/;"	i
+get_group	backend/views.py	/^def get_group(current_user, group_id):$/;"	f
 get_groups	backend/views.py	/^def get_groups(current_user):$/;"	f
 get_id	backend/models.py	/^    def get_id(self):$/;"	m	class:User
+group_info	backend/views.py	/^def group_info(group_id):$/;"	f
 h1	backend/static/css/style.css	/^h1 {$/;"	s
 hashed_password	backend/models.py	/^    hashed_password = db.Column(db.String(256))$/;"	v	class:User
 home	backend/views.py	/^def home():$/;"	f
@@ -103,6 +107,7 @@ timedelta	backend/models.py	/^from datetime import datetime, timedelta$/;"	i
 update_at	backend/models.py	/^    update_at = db.Column(db.DateTime, default=datetime.now)$/;"	v	class:PlayersGroup
 update_at	backend/models.py	/^    update_at = db.Column(db.DateTime, default=datetime.now)$/;"	v	class:User
 update_group	backend/views.py	/^def update_group(group_id):$/;"	f
+update_group_name	backend/views.py	/^def update_group_name(group_id):$/;"	f
 update_player	backend/views.py	/^def update_player(player_id):$/;"	f
 url_for	backend/auth.py	/^from flask import Blueprint, flash, redirect, render_template, request, url_for$/;"	i
 url_for	backend/views.py	/^from flask import Blueprint, redirect, render_template, request, url_for$/;"	i

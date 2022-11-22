@@ -7,7 +7,6 @@ from backend.models import Player, PlayersGroup, User, db
 
 @login_manager.user_loader
 def load_user(user_id):
-    # return User.query.filter_by(int(user_id))
     return User.query.get(int(user_id))
 
 
@@ -19,6 +18,13 @@ def get_groups(current_user):
         user_id=current_user.get_id())
     groups = [group for group in groups_by_query]
     return groups
+
+
+def get_group(current_user, group_id):
+    groups = get_groups(current_user=current_user)
+    for group in groups:
+        if group.id == group_id:
+            return group
 
 
 @view_bp.route('/')
@@ -44,22 +50,30 @@ def create_group():
     return render_template('create_group.jinja')
 
 
-@view_bp.route('/update_group/<int:group_id>', methods=['GET', 'POST'])
+@view_bp.route('/group_info/<int:group_id>', methods=['GET', 'POST'])
 @ login_required
-def update_group(group_id):
+def group_info(group_id):
+    if request.method == 'GET':
+        players = Player.query.filter_by(belonged_group_id=group_id)
+        players = sorted(players, key=lambda player: player.play_times)
+        return render_template('group_info.jinja', group=get_group(current_user=current_user, group_id=group_id), players=players)
+
+
+@view_bp.route('/update_group_name/<int:group_id>', methods=['GET', 'POST'])
+@ login_required
+def update_group_name(group_id):
     if request.method == 'POST':
         with db.session.begin(subtransactions=True):
             group = PlayersGroup.query.get(group_id)
             group.name = request.form['group_name']
         db.session.commit()
         return redirect(url_for('views.home'))
-    return render_template('update_group.jinja')
+    return render_template('update_group_name.jinja', group_id=group_id)
 
 
 @view_bp.route('/delete_group/<int:group_id>', methods=['POST'])
 @ login_required
 def delete_group(group_id):
-
     if request.method == 'POST':
         with db.session.begin(subtransactions=True):
             group = PlayersGroup.query.get(id=group_id)
@@ -81,12 +95,12 @@ def create_player(group_id):
             db.session.add(new_player)
         db.session.commit()
 
-        return redirect(url_for('show_group'), group_id=group_id)
-    return render_template('create_player.jinja')
+        return redirect(url_for('views.group_info', group_id=group_id))
+    return render_template('create_player.jinja', group=get_group(current_user=current_user, group_id=group_id))
 
 
-@ view_bp.route('/update_player/<int:player_id>', methods=['GET', 'POST'])
-@ login_required
+@view_bp.route('/update_player/<int:player_id>', methods=['GET', 'POST'])
+@login_required
 def update_player(player_id):
     player = Player.query.get(player_id)
     group_id = player.belonged_group_id
@@ -98,10 +112,16 @@ def update_player(player_id):
             player.gender = request.form['player_gender']
             player.play_times = request.form['play_times']
         db.session.commit()
-        return redirect(url_for('show_group'), group_id=group_id)
+        return redirect(url_for('views.group_info', group_id=group_id))
     return render_template('update_player.jinja')
 
 
-@view_bp.route('/show_group/<int:group_id>', methods=['GET'])
-def show_group(group_id):
-    return render_template('show_group.jinja')
+@view_bp.route('/delete_player/<int:player_id>', methods=['GET', 'POST'])
+@ login_required
+def delete_player(player_id):
+    player = Player.query.get(player_id)
+    group_id = player.belonged_group_id
+    with db.session.begin(subtransactions=True):
+        db.session.delete(player)
+    db.session.commit()
+    return redirect(url_for('views.group_info', group_id=group_id))

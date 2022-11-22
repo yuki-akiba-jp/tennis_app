@@ -1,0 +1,19 @@
+{% extends "base.jinja" %} {% block content %}
+<h1>group_info</h1>
+<h1> group_name: {{ group.name }} </h1>
+
+<button type="submit" name="back_to_home" onclick="location.href='{{ url_for('views.home') }}';"  class="btn btn-primary">home</button>
+<button type="submit" name="update_group_name" onclick="location.href='{{ url_for('views.update_group_name',group_id=group.id) }}';"  class="btn btn-primary">update_group_name</button>
+
+{% if not players %}
+<h1> no players registered</h1>
+{% endif %}
+
+{% for player in players %}
+    <h2>name: {{ player.name }} gender: {{ player.gender }} play_times: {{ player.play_times }}
+    <button type="submit" name="delete_player" onclick="location.href='{{ url_for('views.delete_player',player_id=player.id) }}';"  class="btn btn-primary">delete_player</button>
+    </h2>
+{% endfor %}
+
+<button type="submit" name="create_player" onclick="location.href='{{ url_for('views.create_player',group_id=group.id) }}';"  class="btn btn-primary">create_player</button>
+{% endblock content %}

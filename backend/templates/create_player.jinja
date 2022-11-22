@@ -1,11 +1,20 @@
-{% extends "base.html" %} {% block content %}
-<div>
-  <h1>add member</h1>
-  <form method="POST">
-    {{form.csrf_token}} {{form.name.label}}{{form.name()}}<br />
-    {{form.gender.label}}{{form.gender()}}<br />
-    {{form.submit()}}
-  </form>
+{% extends "base.jinja" %} {% block content %}
+<h1>create player</h1>
+<form method="post">
+  <div class="mb-3">
+    <label for="" class="form-label">player_name</label>
+    <input type="text" class="form-control"  name="player_name" />
+  </div>
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="player_gender"  value="man">
+  <label class="" for="">man</label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="player_gender" value="woman" >
+  <label class="" for="">woman</label>
 </div>
 
-{% endblock %}
+    <button type="submit" name="create_player" onclick="location.href='{{ url_for('views.create_player',group_id=group.id) }}';"  class="btn btn-primary">create_player</button>
+</form>
+
+{% endblock content %}
