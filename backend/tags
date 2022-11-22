@@ -4,6 +4,8 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
+0	templates/.devcontainer/devcontainer.json	/^				"samuelcolvin.jinjahtml"$/;"	s	array:customizations.vscode.extensions
+0	templates/.vscode/extensions.json	/^  "recommendations": ["samuelcolvin.jinjahtml"]$/;"	s	array:recommendations
 Blueprint	auth.py	/^from flask import Blueprint, flash, redirect, render_template, request, url_for$/;"	i
 Blueprint	views.py	/^from flask import Blueprint, redirect, render_template, request, url_for$/;"	i
 Flask	__init__.py	/^from flask import Flask$/;"	i
@@ -22,10 +24,14 @@ User	views.py	/^from backend.models import Player, PlayersGroup, User, db$/;"	i
 UserMixin	models.py	/^from flask_login import UserMixin, current_user$/;"	i
 __init__	models.py	/^    def __init__(self, group_name, user_id):$/;"	m	class:PlayersGroup
 __init__	models.py	/^    def __init__(self, name, gender, belonged_group_id):$/;"	m	class:Player
+__init__	models.py	/^    def __init__(self, name, user_id):$/;"	m	class:PlayersGroup
 __init__	models.py	/^    def __init__(self, username, hashed_password):$/;"	m	class:User
 __tablename__	models.py	/^    __tablename__ = 'player'$/;"	v	class:Player
+__tablename__	models.py	/^    __tablename__ = 'player'$/;"	v	class:Player	file:
 __tablename__	models.py	/^    __tablename__ = 'players_group'$/;"	v	class:PlayersGroup
+__tablename__	models.py	/^    __tablename__ = 'players_group'$/;"	v	class:PlayersGroup	file:
 __tablename__	models.py	/^    __tablename__ = 'user'$/;"	v	class:User
+__tablename__	models.py	/^    __tablename__ = 'user'$/;"	v	class:User	file:
 auth_bp	__init__.py	/^    from backend.auth import auth_bp$/;"	i
 auth_bp	auth.py	/^auth_bp = Blueprint('auth', __name__, url_prefix='\/')$/;"	v
 belonged_group_id	models.py	/^    belonged_group_id = db.Column(db.Integer)$/;"	v	class:Player
@@ -38,6 +44,7 @@ create_player	views.py	/^def create_player(group_id):$/;"	f
 current_user	auth.py	/^from flask_login import current_user, login_required, login_user, logout_user$/;"	i
 current_user	models.py	/^from flask_login import UserMixin, current_user$/;"	i
 current_user	views.py	/^from flask_login import current_user, login_required$/;"	i
+customizations	templates/.devcontainer/devcontainer.json	/^	"customizations": {$/;"	o
 datetime	auth.py	/^from datetime import datetime$/;"	i
 datetime	models.py	/^from datetime import datetime, timedelta$/;"	i
 db	__init__.py	/^db = SQLAlchemy()$/;"	v
@@ -45,18 +52,22 @@ db	auth.py	/^from backend import db$/;"	i
 db	models.py	/^from backend import db$/;"	i
 db	views.py	/^from backend.models import Player, PlayersGroup, User, db$/;"	i
 delete_group	views.py	/^def delete_group(group_id):$/;"	f
+extensions	templates/.devcontainer/devcontainer.json	/^			"extensions": [$/;"	a	object:customizations.vscode
 flash	auth.py	/^from flask import Blueprint, flash, redirect, render_template, request, url_for$/;"	i
 gender	models.py	/^    gender = db.Column(db.String)$/;"	v	class:Player
 generate_password_hash	__init__.py	/^from werkzeug.security import generate_password_hash$/;"	i
 generate_password_hash	auth.py	/^from werkzeug.security import generate_password_hash$/;"	i
 generate_password_hash	database.py	/^from werkzeug.security import generate_password_hash$/;"	i
 generate_password_hash	models.py	/^from werkzeug.security import check_password_hash, generate_password_hash$/;"	i
+get_groups	views.py	/^def get_groups(current_user):$/;"	f
 get_id	models.py	/^    def get_id(self):$/;"	m	class:User
+h1	static/css/style.css	/^h1 {$/;"	s
 hashed_password	models.py	/^    hashed_password = db.Column(db.String(256))$/;"	v	class:User
 home	views.py	/^def home():$/;"	f
 id	models.py	/^    id = db.Column(db.Integer, primary_key=True)$/;"	v	class:Player
 id	models.py	/^    id = db.Column(db.Integer, primary_key=True)$/;"	v	class:PlayersGroup
 id	models.py	/^    id = db.Column(db.Integer, primary_key=True)$/;"	v	class:User
+image	templates/.devcontainer/devcontainer.json	/^	"image": "mcr.microsoft.com\/devcontainers\/base:alpine-3.16",$/;"	s
 inclement_play_times	models.py	/^    def inclement_play_times(self):$/;"	m	class:Player
 init_db	__init__.py	/^    from backend.database import init_db$/;"	i
 init_db	database.py	/^def init_db(db):$/;"	f
@@ -71,13 +82,17 @@ logout	auth.py	/^def logout():$/;"	f
 logout_user	auth.py	/^from flask_login import current_user, login_required, login_user, logout_user$/;"	i
 name	models.py	/^    name = db.Column(db.String)$/;"	v	class:Player
 name	models.py	/^    name = db.Column(db.String)$/;"	v	class:PlayersGroup
+name	templates/.devcontainer/devcontainer.json	/^	"name": "Alpine",$/;"	s
 os	__init__.py	/^import os$/;"	i
 play_times	models.py	/^    play_times = db.Column(db.Integer)$/;"	v	class:Player
+recommendations	templates/.vscode/extensions.json	/^  "recommendations": ["samuelcolvin.jinjahtml"]$/;"	a
 redirect	auth.py	/^from flask import Blueprint, flash, redirect, render_template, request, url_for$/;"	i
 redirect	views.py	/^from flask import Blueprint, redirect, render_template, request, url_for$/;"	i
 register	auth.py	/^def register():$/;"	f
 render_template	auth.py	/^from flask import Blueprint, flash, redirect, render_template, request, url_for$/;"	i
 render_template	views.py	/^from flask import Blueprint, redirect, render_template, request, url_for$/;"	i
+reportGeneralTypeIssues	pyrightconfig.json	/^  "reportGeneralTypeIssues": "none",$/;"	s
+reportOptionalSubscript	pyrightconfig.json	/^  "reportOptionalSubscript": "none"$/;"	s
 request	auth.py	/^from flask import Blueprint, flash, redirect, render_template, request, url_for$/;"	i
 request	views.py	/^from flask import Blueprint, redirect, render_template, request, url_for$/;"	i
 show_group	views.py	/^def show_group(group_id):$/;"	f
@@ -95,3 +110,4 @@ uuid4	models.py	/^from uuid import uuid4$/;"	i
 validate_password	models.py	/^    def validate_password(self, password):$/;"	m	class:User
 view_bp	__init__.py	/^    from backend.views import view_bp$/;"	i
 view_bp	views.py	/^view_bp = Blueprint('views', __name__, url_prefix='\/')$/;"	v
+vscode	templates/.devcontainer/devcontainer.json	/^		"vscode": {$/;"	o	object:customizations
