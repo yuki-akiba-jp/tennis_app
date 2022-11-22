@@ -1,23 +1,22 @@
 {% extends "base.jinja" %} {% block content %}
-<h1>login</h1>
-<form method="post">
-  <div class="mb-3">
-    <label for="" class="form-label">username</label>
-    <input type="text" class="form-control"  name="username" />
-  </div>
-  <div class="mb-3 ">
-    <label for="" class="form-label">password</label>
-    <input type="password" class="form-control"  name="password" />
-  </div>
+        <button type="submit" name="register"  onclick="location.href='{{ url_for('auth.register')}}';" class="btn btn-outline-primary">sign up</button>
+<div class="vh-100 bg-gray align-items-center justify-content-center d-flex">
+    <div class="bg-white col-8">
+        <h1>login</h1>
+        <form method="post">
+          <div class="mb-3">
+            <label for="" class="form-label">username</label>
+            <input type="text" class="form-control"  name="username" />
+          </div>
+          <div class="mb-3 ">
+            <label for="" class="form-label">password</label>
+            <input type="password" class="form-control"  name="password" />
+          </div>
+          <button type="submit" class="btn btn-primary">login</button>
+        </form>
 
-  <button type="submit" class="btn btn-primary">login</button>
-</form>
-{% if message %}
-{{ message }}
-{% endif %}
+        {% if message %} <p>{{ message }}</p> {% endif %}
 
-<h3>if you don't have account</h3>
-<a href="{{url_for('auth.register')}}">
-    <button type="submit" name="register" class="btn btn-outline-primary">register</button>
-</a>
+    </div>
+</div>
 {% endblock content %}

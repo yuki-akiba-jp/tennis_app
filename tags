@@ -4,6 +4,8 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
+.bg-gray	backend/static/css/style.css	/^.bg-gray {$/;"	c
+.bg-white	backend/static/css/style.css	/^.bg-white {$/;"	c
 0	backend/templates/.devcontainer/devcontainer.json	/^				"samuelcolvin.jinjahtml"$/;"	s	array:customizations.vscode.extensions
 0	backend/templates/.vscode/extensions.json	/^  "recommendations": ["samuelcolvin.jinjahtml"]$/;"	s	array:recommendations
 Blueprint	backend/auth.py	/^from flask import Blueprint, flash, redirect, render_template, request, url_for$/;"	i

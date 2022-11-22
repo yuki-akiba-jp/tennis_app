@@ -1,3 +1,11 @@
 h1 {
   background-color: black;
 }
+
+.bg-gray {
+  background-color: gray;
+}
+
+.bg-white {
+  background-color: white;
+}
