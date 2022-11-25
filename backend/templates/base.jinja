@@ -12,11 +12,6 @@
     <link rel="stylesheet" href="../static/css/style.css">
   </head>
   <body>
-  <!-- <div class="vh-100  align-items-center justify-content-center d-flex" > -->
-  <!--   <div class=" col-8 d-flex flex-wrap"> </div> -->
-  <!--   <h1>tennis app</h1> -->
-  <!-- </div> -->
-
   {% if current_user.is_authenticated %}
     
 <button type="submit" name="logout" onclick="location.href='{{ url_for('auth.logout') }}';"  class="btn btn-primary">logout</button>
