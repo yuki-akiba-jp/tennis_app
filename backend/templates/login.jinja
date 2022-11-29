@@ -4,13 +4,15 @@
     <button type="submit" name="signup"  onclick="location.href='{{ url_for('auth.signup')}}';" class="btn btn-outline-primary ">sign up</button>
 </div>
 
-          <div class="mb-3 col-8">
-            <input type="text" id="username" class="form-control" placeholder="username"  name="username" required />
-          </div>
-          <div class="mb-3 col-k">
-            <input type="password" id="password"  class="form-control" placeholder="password" name="password" required/>
-          </div>
-        <form method="post"> <button type="submit" id="loginBtn" class="btn btn-primary">login</button> </form>
+<form method="post"> 
+  <div class="mb-3 col-8">
+    <input type="text" id="username" class="form-control" placeholder="username"  name="username" required />
+  </div>
+  <div class="mb-3 col-8">
+    <input type="password" id="password"  class="form-control" placeholder="password" name="password" required/>
+  </div>
+  <button type="submit" id="loginBtn" class="btn btn-primary">login</button> 
+</form>
 
         {% if message %} <p>{{ message }}</p> {% endif %}
 
