@@ -13,9 +13,16 @@
   </head>
   <body>
   {% if current_user.is_authenticated %}
-    
-<button type="submit" name="logout" onclick="location.href='{{ url_for('auth.logout') }}';"  class="btn btn-primary">logout</button>
+  <div class="d-flex justify-content-end">
+    <button type="submit" name="logout" onclick="location.href='{{ url_for('auth.logout') }}';"  class="btn btn-primary">logout</button>
+  </div>
+  {% else %}
+  
+  <div class="d-flex justify-content-end">
+      <button type="submit" name="signup"  onclick="location.href='{{ url_for('auth.signup')}}';" class="btn btn-outline-primary ">sign up</button>
+  </div>
   {% endif %}
+
     {% block content %} 
     {% endblock content %}
   </body>
